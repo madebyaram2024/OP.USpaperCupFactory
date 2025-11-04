@@ -31,7 +31,13 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- **I. Design System Driven**: Does the plan account for using the established Design System?
+- **II. Component-Based Architecture**: Is the feature broken down into reusable components?
+- **III. Responsive & Accessible**: Does the plan include tasks for responsive and accessible UI?
+- **IV. Performance by Default**: Are there considerations for performance in the plan?
+- **V. Rigorous Testing**: Does the plan include a comprehensive testing strategy?
+- **VI. Conventional Commits**: Is the team aware of the conventional commit requirement?
+- **VII. API-First Approach**: Does the plan respect the API-first approach?
 
 ## Project Structure
 

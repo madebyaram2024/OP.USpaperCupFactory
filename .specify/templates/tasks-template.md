@@ -73,6 +73,19 @@ Examples of foundational tasks (adjust based on your project):
 
 ---
 
+## Constitution-Driven Tasks
+
+**Purpose**: Ensure all work aligns with the project constitution.
+
+- [ ] **Design System**: All new UI components MUST be built according to the Stitch Dashboard Design System.
+- [ ] **Responsiveness**: All UI components MUST be tested for responsiveness across all supported breakpoints.
+- [ ] **Accessibility**: All UI components MUST be tested for accessibility (WCAG AA).
+- [ ] **Performance**: All new features MUST be benchmarked for performance.
+- [ ] **Testing**: All new code MUST be accompanied by unit, integration, and E2E tests.
+- [ ] **Conventional Commits**: All commits MUST adhere to the Conventional Commits specification.
+
+---
+
 ## Phase 3: User Story 1 - [Title] (Priority: P1) 🎯 MVP
 
 **Goal**: [Brief description of what this story delivers]

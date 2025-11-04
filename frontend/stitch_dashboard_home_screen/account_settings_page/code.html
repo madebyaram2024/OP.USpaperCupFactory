@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account Settings - Pacific Paper</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4ea8c6",
+              "background-light": "#f6f7f8",
+              "background-dark": "#141c1e",
+              "navy-blue": "#1F3A5F",
+              "pacific-blue": "#4FA9C6",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="flex w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark p-4">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 px-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Pacific Paper company logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5A_5MAwdC1s55UWLefWFer63s-MeE__vRwBvPHZz9QsFhrC1AuBlDMdwNuJC3xdPsgMiGn0RZlWkg5thcPk6X1ZroHtD9cHz0o5UYulTn1fHmBt6DoodyZS8S8y7HH-rSwEE_yv5AslIicZ7Y-iR-GgtjEcymwS4lUXUFkzw4qFV_iy3XLI1lvo147Buny082nTPWVhTIrOrUXQ0Da84wd1eJpCYgZCLBBjY4ZOLXJP4ZTk1dVboDvF7FJqS8Q0-GErEmL9tZglw");'></div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-medium leading-normal">Pacific Paper</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Production Mgmt.</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-200">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-200">package_2</span>
+<p class="text-sm font-medium leading-normal">Orders</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-200">inventory_2</span>
+<p class="text-sm font-medium leading-normal">Inventory</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-200">admin_panel_settings</span>
+<p class="text-sm font-medium leading-normal">Admin</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-200">forum</span>
+<p class="text-sm font-medium leading-normal">Communication Hub</p>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+<span class="material-symbols-outlined text-gray-800 dark:text-gray-200">help</span>
+<p class="text-sm font-medium leading-normal">Support</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-pacific-blue/10" href="#">
+<span class="material-symbols-outlined text-pacific-blue" style="font-variation-settings: 'FILL' 1;">settings</span>
+<p class="text-pacific-blue text-sm font-medium leading-normal">Account Settings</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark px-10 py-3 sticky top-0 z-10">
+<div class="flex items-center gap-8">
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Account Settings</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-gray-500 dark:text-gray-400 flex border-none bg-gray-100 dark:bg-gray-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-gray-100 dark:bg-gray-800 focus:border-none h-full placeholder:text-gray-500 dark:placeholder:text-gray-400 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search..." value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCr-1vTwq-0mghOQ3F0XzSk2j3tmSA0_UrxEnzSRTrQbelmsio6xSYOZ0I_no9GksfOYxiKIXrXFTYdL96V3jkg78F4wcJbAD3jR_NYU4fwT8c5H3UY60-pUs8OPGwFIQ99BWRiZLNqGYXjv11cHOFLUXMVtWjZBDEuWeBeN44Y4e6OowOM_gWOE1x87Mgbfw8Gl-JLf0tzk4wGNoey9ahCdcEFD57MXlajMP4tQg5ApV1xX2H0LyEZIjS3Rqi-6KCNVil3hSTKenE");'></div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-10 relative">
+<div class="absolute inset-0 z-0 opacity-5 dark:opacity-10" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEjE-9ArhWyGCRNYBpYYqUUoNE1JMN5XJ9QWDgyEnMmtY1Na5XacaqGz5A9UBx1nM20_1DsbM1BHREE8J3hO4nZccmeR5Lnvnm-5aVwxGhlVE7SkkwEu14HcxfpY5T9w0GYmfNKfPV4uzgyFvtOXbzQXQS8OL0PzaDC4cCqBBIFl-udkA6DeS6yLKTcxsJewuG-HS_PBx0-Qi4VSL7FktmE-8W8tWIEJIxJ5JhZtoTmH3ZSKfZKQSXKTSTZ1wbxxukNFZVbgEac2w');"></div>
+<div class="max-w-4xl mx-auto space-y-8 relative z-10">
+<!-- Profile Information Section -->
+<div class="bg-white dark:bg-gray-800/50 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-6 pt-5 pb-3 border-b border-gray-200 dark:border-gray-700">Profile Information</h2>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal pb-2">Full Name</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-pacific-blue border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 h-12 placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal" value="John Doe"/>
+</label>
+<label class="flex flex-col">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal pb-2">Email Address</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-pacific-blue border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 h-12 placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal" value="john.doe@pacificpaper.com"/>
+</label>
+<label class="flex flex-col">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal pb-2">Phone Number</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-pacific-blue border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 h-12 placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal" value="+1 (555) 123-4567"/>
+</label>
+<label class="flex flex-col">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal pb-2">Role</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 h-12 p-[15px] text-base font-normal leading-normal cursor-not-allowed" disabled="" value="Production Manager"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Password Management Section -->
+<div class="bg-white dark:bg-gray-800/50 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-6 pt-5 pb-3 border-b border-gray-200 dark:border-gray-700">Change Password</h2>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col col-span-2 md:col-span-1">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal pb-2">Current Password</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-pacific-blue border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 h-12 placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal" placeholder="Enter your current password" type="password"/>
+</label>
+<div class="col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="flex flex-col">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal pb-2">New Password</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-pacific-blue border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 h-12 placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal" placeholder="Enter new password" type="password"/>
+</label>
+<label class="flex flex-col">
+<p class="text-gray-800 dark:text-gray-200 text-sm font-medium leading-normal pb-2">Confirm New Password</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-pacific-blue border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 h-12 placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal" placeholder="Confirm new password" type="password"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Notification Preferences Section -->
+<div class="bg-white dark:bg-gray-800/50 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+<h2 class="text-gray-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-6 pt-5 pb-3 border-b border-gray-200 dark:border-gray-700">Notification Preferences</h2>
+<div class="p-6 space-y-4">
+<div class="flex items-center justify-between">
+<p class="text-gray-800 dark:text-gray-200">New Production Order Alerts</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 dark:bg-gray-600 rounded-full peer peer-focus:ring-2 peer-focus:ring-pacific-blue dark:peer-focus:ring-pacific-blue peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-500 peer-checked:bg-pacific-blue"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-gray-800 dark:text-gray-200">System Maintenance Updates</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 dark:bg-gray-600 rounded-full peer peer-focus:ring-2 peer-focus:ring-pacific-blue dark:peer-focus:ring-pacific-blue peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-500 peer-checked:bg-pacific-blue"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-gray-800 dark:text-gray-200">Weekly Summary Report</p>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 dark:bg-gray-600 rounded-full peer peer-focus:ring-2 peer-focus:ring-pacific-blue dark:peer-focus:ring-pacific-blue peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-500 peer-checked:bg-pacific-blue"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex justify-end items-center gap-4 pt-4">
+<button class="px-6 py-2.5 rounded-lg text-gray-700 dark:text-gray-200 font-medium bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">Cancel</button>
+<button class="px-6 py-2.5 rounded-lg text-white font-medium bg-navy-blue hover:bg-navy-blue/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">Save Changes</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

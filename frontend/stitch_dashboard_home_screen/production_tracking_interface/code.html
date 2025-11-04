@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Production Tracking - Pacific Paper Cups and More</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1f3a60",
+                        "pacific-blue": "#4FA9C6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#14181e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .wave-bg {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%23e0e7ff' fill-opacity='0.3' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,133.3C960,107,1056,85,1152,96C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3e%3c/path%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+        }
+        .dark .wave-bg {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%231f3a60' fill-opacity='0.2' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,133.3C960,107,1056,85,1152,96C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3e%3c/path%3e%3c/svg%3e");
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#333333] dark:text-gray-200">
+<div class="relative flex h-auto min-h-screen w-full flex-row group/design-root overflow-x-hidden">
+<aside class="flex w-64 flex-col bg-primary text-white p-4 sticky top-0 h-screen">
+<div class="flex items-center gap-3 p-4 mb-8">
+<div class="size-8 text-white">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_330">
+<rect fill="white" height="48" width="48"></rect>
+</clipPath>
+</defs>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Pacific Paper</h2>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<div class="flex-grow">
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/80 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-white border-l-4 border-pacific-blue bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">view_kanban</span>
+<span class="text-sm font-bold">Production</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/80 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span class="text-sm font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/80 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">folder_open</span>
+<span class="text-sm font-medium">Files</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/80 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">forum</span>
+<span class="text-sm font-medium">Communication Hub</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/80 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/80 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">bar_chart</span>
+<span class="text-sm font-medium">Reporting</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/80 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+<div>
+<a class="flex items-center gap-3 rounded-lg px-4 py-2 text-white/80 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">help_outline</span>
+<span class="text-sm font-medium">Help &amp; Support</span>
+</a>
+</div>
+</nav>
+</aside>
+<div class="flex flex-1 flex-col wave-bg">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 dark:border-b-gray-700 px-6 sm:px-10 py-3 bg-white/80 dark:bg-background-dark/80 sticky top-0 z-10 backdrop-blur-sm">
+<div class="flex flex-1 items-center justify-start gap-4 sm:gap-6">
+<div class="relative w-full max-w-sm">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"> search </span>
+<input class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 py-2 pl-10 pr-4 text-sm text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:border-primary focus:ring-primary" placeholder="Search customers, orders, files..." type="search"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-opacity-90 transition-colors">
+<span class="truncate">Add New Order</span>
+</button>
+<div class="relative group">
+<button class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar placeholder image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDVVYCTrmESaxajAf9nh_GS1-FeXHfDettvo-cfbtreUTL2iRoSdlH5japcfhSj49f7AaJ-NzW5VyarjEOc15sSvpvy5KQ1eo-sA8WKDCaR5DDX8yXdLg8aNq2s9PW67prIetG2xQf_G41fWOti_AZUm-JnrgNgycpNUF-Za5oH-3Y8QFD4NvAy7LKYYEqPz2fwxGMeq-DtamiFMru0U2dZ7ks0di-iMHcwfWFqOeVnzRXWnhJN98Te8ljsr-c3jkr7gmzgh7gKpZU");'></button>
+<div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-1 border border-gray-200 dark:border-gray-700 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 invisible group-hover:visible group-focus-within:visible">
+<a class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" href="account-settings.html">My Profile</a>
+<a class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" href="account-settings.html">Settings</a>
+<div class="border-t border-gray-200 dark:border-gray-600 my-1"></div>
+<a class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" href="#">Logout</a>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow p-4 sm:p-6 lg:p-10">
+<div class="max-w-screen-2xl mx-auto">
+<div class="flex flex-wrap justify-between items-start gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<p class="text-gray-900 dark:text-white text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em]">Production Tracking</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Manage and track work orders through the production pipeline.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="flex flex-col gap-4 bg-gray-100/80 dark:bg-background-dark/80 backdrop-blur-sm p-4 rounded-xl">
+<div class="flex items-center justify-between">
+<h2 class="text-primary dark:text-blue-200 text-lg font-bold leading-tight tracking-[-0.015em]">Printing (3)</h2>
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-xl">photo_camera</span>
+</button>
+</div>
+<div class="flex flex-col items-stretch justify-start rounded-lg shadow-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 @container">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg" data-alt="Image of 12oz custom printed paper cups" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCDFakpdaFsO18qNzLmjM30jJA1U68KzbHP1Q8wjsMUmOZOqfDqUvf_A9O_bWmUjoEYBwQipR_ekfK0_nJlh04RsQwq-qf5OhlM1Llt_qA8tpaUvsxuIMrIcli61rVlQeM_4Kp1djn9eX1cqK4PDDhf_13zUqbaebOziK7U84-cJdvI91tt-Qo1VGDguDDOcK6s4G8qg4O46XU_J2F7QKSUNmWTW1ZTeusSVDPZMf3MzmogvfLH4wGVeBhhr7bj1R3i7ZWSFz5y0qw");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-3 p-4">
+<div class="flex items-center justify-between">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">12oz Custom Cups</p>
+<span class="inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/50 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:text-red-200">Urgent</span>
+</div>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">#PPC-1024</p>
+<div class="flex items-end gap-3 justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-normal">The Coffee Co.</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Due: 2024-10-28</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-blue-200 text-sm font-medium leading-normal hover:bg-primary/30 dark:hover:bg-primary/40 transition-colors">
+<span class="truncate">View Details</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-stretch justify-start rounded-lg shadow-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 @container">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg" data-alt="Image of 8oz paper lids" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfWnBL9i9gy_MULBRogX25muPKPfZNvRIeq9pxE4TIicUF4fu6lz9M5Y6xBrftHHhY_cuf8NDUtFYZZ2MgiZy3JDch7N59mgKhiFF52QxMFIVUO4WdM_Noo7syzQTUED684RuvGH46x0cngqzsqJNmcG9xLdpzOpLehzPCk3mqpuI_ZBL9U0fOwpWMIv2NJdZCwWXJ6gTGABU99N4ctQC-ruskWmeIAyrxT8f9w6BP03w5ynJYtH-aJOicirZk8mKA13M9qxdL8tU");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-3 p-4">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">8oz Paper Lids</p>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">#PPC-1025</p>
+<div class="flex items-end gap-3 justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-normal">Beachside Cafe</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Due: 2024-10-30</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-blue-200 text-sm font-medium leading-normal hover:bg-primary/30 dark:hover:bg-primary/40 transition-colors">
+<span class="truncate">View Details</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-stretch justify-start rounded-lg shadow-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 @container">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg" data-alt="Image of custom printed coffee sleeves" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACPH2kRzP6LPGI8FebQ67w9p89FUdUzh8gMO1F-OdgOYzA37GDYHpa8URL-WRkd7ce2NLfqPNWhL0SQ5MhMyEtdYoUx9tpRDt34efieamMLNSnT9ZDD3uVevXFojUIdw3BLB2d24ZSzOTWEF0TEEJyeuPfxNZ7Ow_icN1-sIWr68RZ-MsZrmd393GomE6gp9p48pJXZop6raxAtItJqyCxmmpixX58HzACNTWiynhty67MkEvNKKNTN0KRvvYht9VrtClJCPpZkM0");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-3 p-4">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Cup Sleeves</p>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">#PPC-1026</p>
+<div class="flex items-end gap-3 justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-normal">Artisan Roasters</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Due: 2024-11-02</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-blue-200 text-sm font-medium leading-normal hover:bg-primary/30 dark:hover:bg-primary/40 transition-colors">
+<span class="truncate">View Details</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 bg-gray-100/80 dark:bg-background-dark/80 backdrop-blur-sm p-4 rounded-xl">
+<div class="flex items-center justify-between">
+<h2 class="text-primary dark:text-blue-200 text-lg font-bold leading-tight tracking-[-0.015em]">Production / Assembly (1)</h2>
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-xl">photo_camera</span>
+</button>
+</div>
+<div class="flex flex-col items-stretch justify-start rounded-lg shadow-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 @container">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-lg" data-alt="Image of 16oz paper cups being formed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBpxAouTDCn0zqMs_w-FcK_r02ZgcnC0EEp-tDWfOy6hozbmA46YPcx4vEWcyUrt93y0xJUpZvNkCW4b_PGf0NxWVmAf0BNVskOvfdV5QjhaNS-z5kP3tgcyFJPfF72S9ykxj2ew5A0QEFasyREATP4j9Vs1_yO63LfvO3yw-kEjTSv6kbkyiAwcYdGQs78b3x306MsbXguKCa0mStOlTSuCHszZWQunhiKF5YlRQ0QLclXLm9CGBn320-MZaDS7wW9qekVGNzHyls");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-3 p-4">
+<div class="flex items-center justify-between">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">16oz Double-Wall Cups</p>
+<span class="inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900/50 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-200">On Hold</span>
+</div>
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">#PPC-1022</p>
+<div class="flex items-end gap-3 justify-between">
+<div class="flex flex-col gap-1">
+<p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-normal">Metro Grind</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Due: 2024-10-25</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-primary/20 dark:bg-primary/30 text-primary dark:text-blue-200 text-sm font-medium leading-normal hover:bg-primary/30 dark:hover:bg-primary/40 transition-colors">
+<span class="truncate">View Details</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 bg-gray-100/80 dark:bg-background-dark/80 backdrop-blur-sm p-4 rounded-xl">
+<div class="flex items-center justify-between">
+<h2 class="text-primary dark:text-blue-200 text-lg font-bold leading-tight tracking-[-0.015em]">Shipping (0)</h2>
+<button class="flex items-center justify-center size-8 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-xl">photo_camera</span>
+</button>
+</div>
+<div class="flex items-center justify-center text-center p-10 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg">
+<p class="text-gray-500 dark:text-gray-400 text-sm">No orders ready for shipping.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

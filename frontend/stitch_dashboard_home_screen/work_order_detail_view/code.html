@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Work Order Management - Pacific Paper</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1f3a5f",
+                        "pacific-blue": "#4FA9C6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#14181e",
+                        "navy-blue": "#1F3A5F",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        body.light {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23e9edf0' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0h1v5h4v1H6v4H5V6H0V5h5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-color: #f6f7f8;
+        }
+        body.dark {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%231f2937' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0h1v5h4v1H6v4H5V6H0V5h5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-color: #14181e;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#121416] dark:text-gray-200">
+<div class="flex h-screen">
+<aside class="w-64 flex-shrink-0 bg-navy-blue text-white flex flex-col">
+<div class="flex items-center gap-3 h-16 px-6 border-b border-white/10">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Pacific Paper logo with wave motif" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAz79b-pmbWHWSo8lv5d13-OsHAljdNybtoMBwi6iw-z0BMVak4SA0AlE9zwbMF0zlPpTne6uRkVIMoI0Zj2msVUB9zBC4TJzkjS2MuRqUGB_SiBTTVD97EcSxm00Mf0ipkYZUcxf7kkvEYCPjx5a_pkyL2y5Sd51hswHPzETx5oGUDpOL47a7cxsyN7Aj9YzYkbVIFOFylWxZvhiLs9qAJg_acsfzu_nu9wxdNM4Gto34Cu04ugRQtr_v0iTkYkSPLhxAH98K4NhI");'></div>
+<div class="flex-col">
+<h1 class="text-white text-base font-bold leading-normal">Pacific Paper</h1>
+<p class="text-gray-300 text-sm font-normal leading-normal">Production Hub</p>
+</div>
+</div>
+<nav class="flex-1 p-4 flex flex-col justify-between">
+<ul class="space-y-2">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-300 hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-gray-300">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 pl-3 py-2 text-white border-l-4 border-pacific-blue bg-white/10 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-white">folder</span>
+<span class="text-sm font-bold">Work Orders</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-300 hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-gray-300">forum</span>
+<span class="text-sm font-medium">Communication Hub</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-300 hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-gray-300">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-300 hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-gray-300">bar_chart</span>
+<span class="text-sm font-medium">Reporting</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-300 hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-gray-300">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</li>
+</ul>
+<div>
+<ul class="space-y-2 pt-4 border-t border-white/10">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-300 hover:bg-white/10 rounded-lg" href="#">
+<span class="material-symbols-outlined text-gray-300">help_outline</span>
+<span class="text-sm font-medium">Help &amp; Support</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+</aside>
+<div class="flex flex-col flex-1 overflow-hidden">
+<header class="bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
+<div class="flex items-center justify-between h-16 px-4 md:px-6">
+<div class="flex-1 flex justify-start">
+<div class="w-full max-w-lg relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="w-full bg-background-light dark:bg-gray-800 text-gray-700 dark:text-gray-300 placeholder-gray-500 border-none rounded-lg pl-10 pr-4 py-2 focus:ring-2 focus:ring-pacific-blue focus:outline-none" placeholder="Search customers, work orders, files..." type="search"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="relative group">
+<button class="flex items-center gap-2">
+<img alt="User avatar" class="h-8 w-8 rounded-full cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaIYvll_99y5PeXJMmeAEBExiBwjpYtvitxpWPlvxGURC8XdNF_hjFfC5IaeV5hJF6H6W349dQmbGFzSjk7-fY44qA6AFuQx85SOW3SutgRTKFsCwt3wtlp-wu5sWaSetNKwyFimbDuXwgBjcb1XjMH30BvYOJQXsDnOlDMRbK4EQH35nJVNLFTYGjcR8ADY2fz3SaB3uH0PEtpLBkM2W1vBEhbwz383uYURrg_Cv-VnDkS5riyMIYnyMhnsGURN3TcF_s3Ilrfnw"/>
+</button>
+<div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg py-1 hidden group-hover:block ring-1 ring-black ring-opacity-5">
+<a class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" href="#">My Profile</a>
+<a class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" href="account-settings.html">Settings</a>
+<div class="border-t border-gray-200 dark:border-gray-700 my-1"></div>
+<a class="block px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-700" href="#">Logout</a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="mx-auto max-w-6xl">
+<div class="flex flex-wrap justify-between gap-4 items-center mb-6">
+<div class="flex flex-col gap-2">
+<p class="text-[#121416] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Work Order: WO-12457</p>
+<p class="text-[#6a7381] dark:text-gray-400 text-base font-normal leading-normal">Customer: The Coffee House Co.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded-full bg-[#FFC107]/20 px-3 py-1 text-sm font-medium text-[#c68900]">Awaiting Approval</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-6 rounded-xl bg-white dark:bg-background-dark mb-8 shadow-sm">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-[#121416] dark:text-white text-base font-medium leading-normal">Current Stage: Ready for Print</p>
+<p class="text-[#6a7381] dark:text-gray-400 text-sm font-medium">75% Complete</p>
+</div>
+<div class="rounded-full bg-primary h-2.5 dark:bg-gray-700 mt-1">
+<div class="h-2.5 rounded-full bg-pacific-blue" style="width: 75%;"></div>
+</div>
+</div>
+<div class="pb-3">
+<div class="flex border-b border-[#dde0e3] dark:border-gray-700 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4 dark:text-pacific-blue dark:border-b-pacific-blue" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Files</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#6a7381] pb-[13px] pt-4 dark:text-gray-400" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Timeline</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#6a7381] pb-[13px] pt-4 dark:text-gray-400" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Communication</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#6a7381] pb-[13px] pt-4 dark:text-gray-400" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Approvals</p>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8 mt-6">
+<div class="col-span-3 lg:col-span-2 flex flex-col gap-6">
+<div class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 p-8 text-center bg-white dark:bg-background-dark">
+<span class="material-symbols-outlined text-5xl text-gray-400 dark:text-gray-500">cloud_upload</span>
+<p class="mt-2 font-semibold text-[#121416] dark:text-white">Drag &amp; drop files here</p>
+<p class="text-sm text-[#6a7381] dark:text-gray-400">or click to browse</p>
+<button class="mt-4 px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary/90">Upload Files</button>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl shadow-sm">
+<h2 class="text-[#121416] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-4">Files</h2>
+<div class="mb-6">
+<h3 class="text-lg font-semibold text-[#121416] dark:text-gray-200 mb-3">Customer Assets</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-light dark:bg-gray-800/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-pacific-blue">image</span>
+<p class="font-medium text-sm text-[#121416] dark:text-gray-200">logo_final_vector.ai</p>
+</div>
+<div class="flex items-center gap-3">
+<p class="text-sm text-[#6a7381] dark:text-gray-400">2.1 MB</p>
+<button class="text-[#6a7381] dark:text-gray-400 hover:text-black dark:hover:text-white"><span class="material-symbols-outlined">download</span></button>
+<button class="text-[#6a7381] dark:text-gray-400 hover:text-red-500"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-[#121416] dark:text-gray-200 mb-3">Print-Ready Files</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-light dark:bg-gray-800/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-pacific-blue">description</span>
+<p class="font-medium text-sm text-[#121416] dark:text-gray-200">Cup_Design_V3_PRINT.pdf</p>
+</div>
+<div class="flex items-center gap-3">
+<p class="text-sm text-[#6a7381] dark:text-gray-400">5.8 MB</p>
+<button class="text-[#6a7381] dark:text-gray-400 hover:text-black dark:hover:text-white"><span class="material-symbols-outlined">download</span></button>
+<button class="text-[#6a7381] dark:text-gray-400 hover:text-red-500"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-light dark:bg-gray-800/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-pacific-blue">description</span>
+<p class="font-medium text-sm text-[#121416] dark:text-gray-200">Lid_Artwork_Final.pdf</p>
+</div>
+<div class="flex items-center gap-3">
+<p class="text-sm text-[#6a7381] dark:text-gray-400">1.2 MB</p>
+<button class="text-[#6a7381] dark:text-gray-400 hover:text-black dark:hover:text-white"><span class="material-symbols-outlined">download</span></button>
+<button class="text-[#6a7381] dark:text-gray-400 hover:text-red-500"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-3 lg:col-span-1">
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl shadow-sm sticky top-8">
+<h2 class="text-[#121416] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-4 border-b border-gray-200 dark:border-gray-700">Approvals</h2>
+<div class="mt-4 flex flex-col gap-4">
+<button class="w-full text-center rounded-lg px-6 py-3 text-base font-bold text-white bg-[#28A745] hover:bg-green-700">Approve for Print</button>
+<button class="w-full text-center rounded-lg px-6 py-3 text-base font-bold text-white bg-pacific-blue hover:bg-sky-600">Send to Client for Approval</button>
+<button class="w-full text-center rounded-lg px-6 py-3 text-base font-bold text-white bg-[#DC3545] hover:bg-red-700">Request Revisions</button>
+<div class="flex flex-col gap-2 mt-2">
+<label class="text-[#121416] dark:text-gray-200 text-sm font-medium" for="comments">Add Comments or Revisions</label>
+<textarea class="block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white shadow-sm focus:border-primary focus:ring-primary text-sm" id="comments" name="comments" placeholder="e.g., Please adjust the logo placement..." rows="4"></textarea>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+<h3 class="text-base font-semibold text-[#121416] dark:text-white mb-3">Approval History</h3>
+<ul class="space-y-3 text-sm">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 mt-0.5">check_circle</span>
+<div>
+<p class="font-medium text-[#121416] dark:text-gray-200">Internal Design Approved</p>
+<p class="text-[#6a7381] dark:text-gray-400">by Jane Doe - 2 days ago</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<div class="fixed bottom-4 right-4 w-96">
+<div class="bg-white dark:bg-background-dark rounded-xl shadow-2xl flex flex-col h-[500px]">
+<header class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 rounded-t-xl bg-navy-blue text-white">
+<h3 class="text-base font-bold">WO-12457 Chat</h3>
+<button class="text-white/80 hover:text-white">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<div class="flex-1 p-4 overflow-y-auto space-y-4">
+<div class="flex items-start gap-3">
+<img alt="Jane Doe avatar" class="h-8 w-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaIYvll_99y5PeXJMmeAEBExiBwjpYtvitxpWPlvxGURC8XdNF_hjFfC5IaeV5hJF6H6W349dQmbGFzSjk7-fY44qA6AFuQx85SOW3SutgRTKFsCwt3wtlp-wu5sWaSetNKwyFimbDuXwgBjcb1XjMH30BvYOJQXsDnOlDMRbK4EQH35nJVNLFTYGjcR8ADY2fz3SaB3uH0PEtpLBkM2W1vBEhbwz383uYURrg_Cv-VnDkS5riyMIYnyMhnsGURN3TcF_s3Ilrfnw"/>
+<div>
+<div class="flex items-baseline gap-2">
+<p class="font-bold text-sm text-primary dark:text-pacific-blue">Jane Doe</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">3:45 PM</p>
+</div>
+<div class="bg-background-light dark:bg-gray-800 p-3 rounded-lg rounded-tl-none mt-1">
+<p class="text-sm text-gray-800 dark:text-gray-200">Can you confirm the pantone color for the lid? The client just asked.</p>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3 justify-end">
+<div class="flex items-end flex-col">
+<div class="flex items-baseline gap-2">
+<p class="font-bold text-sm text-primary dark:text-pacific-blue">You</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">3:47 PM</p>
+</div>
+<div class="bg-pacific-blue/20 dark:bg-pacific-blue/30 p-3 rounded-lg rounded-br-none mt-1">
+<p class="text-sm text-gray-800 dark:text-gray-200">Checking the spec sheet now. One moment.</p>
+</div>
+</div>
+<img alt="User avatar" class="h-8 w-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaIYvll_99y5PeXJMmeAEBExiBwjpYtvitxpWPlvxGURC8XdNF_hjFfC5IaeV5hJF6H6W349dQmbGFzSjk7-fY44qA6AFuQx85SOW3SutgRTKFsCwt3wtlp-wu5sWaSetNKwyFimbDuXwgBjcb1XjMH30BvYOJQXsDnOlDMRbK4EQH35nJVNLFTYGjcR8ADY2fz3SaB3uH0PEtpLBkM2W1vBEhbwz383uYURrg_Cv-VnDkS5riyMIYnyMhnsGURN3TcF_s3Ilrfnw"/>
+</div>
+<div class="flex items-start gap-3 justify-end">
+<div class="flex items-end flex-col">
+<div class="flex items-baseline gap-2">
+<p class="font-bold text-sm text-primary dark:text-pacific-blue">You</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">3:48 PM</p>
+</div>
+<div class="bg-pacific-blue/20 dark:bg-pacific-blue/30 p-3 rounded-lg rounded-br-none mt-1">
+<p class="text-sm text-gray-800 dark:text-gray-200">It's Pantone 2925 C.</p>
+</div>
+</div>
+<img alt="User avatar" class="h-8 w-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaIYvll_99y5PeXJMmeAEBExiBwjpYtvitxpWPlvxGURC8XdNF_hjFfC5IaeV5hJF6H6W349dQmbGFzSjk7-fY44qA6AFuQx85SOW3SutgRTKFsCwt3wtlp-wu5sWaSetNKwyFimbDuXwgBjcb1XjMH30BvYOJQXsDnOlDMRbK4EQH35nJVNLFTYGjcR8ADY2fz3SaB3uH0PEtpLBkM2W1vBEhbwz383uYURrg_Cv-VnDkS5riyMIYnyMhnsGURN3TcF_s3Ilrfnw"/>
+</div>
+</div>
+<div class="p-4 border-t border-gray-200 dark:border-gray-700">
+<div class="relative">
+<input class="w-full bg-background-light dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded-lg py-2 pl-4 pr-24 text-sm focus:ring-pacific-blue focus:border-pacific-blue" placeholder="Type a message..." type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+<button class="p-1.5 text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-white rounded-md">
+<span class="material-symbols-outlined text-xl">mood</span>
+</button>
+<button class="p-1.5 text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-white rounded-md">
+<span class="material-symbols-outlined text-xl">attachment</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

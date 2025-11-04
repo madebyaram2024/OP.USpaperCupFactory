@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Catalog - Pacific Paper Cups</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4FA9C6", // Pacific Blue
+                        "secondary": "#1F3A5F", // Navy Blue
+                        "background-light": "#F7F8FA", // Light Gray
+                        "background-dark": "#131b1f",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1a242a",
+                        "text-light": "#121517",
+                        "text-dark": "#e1e3e6",
+                        "text-muted-light": "#677a83",
+                        "text-muted-dark": "#9ba1a6"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-screen w-full flex-row overflow-hidden">
+<aside class="flex h-full w-64 flex-shrink-0 flex-col justify-between bg-secondary p-4 text-white">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="size-8 bg-white/20 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">
+                            waves
+                        </span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold leading-normal">Pacific Paper Cups</h1>
+<p class="text-white/70 text-sm font-normal leading-normal">Admin Panel</p>
+</div>
+</div>
+<nav class="flex flex-col gap-4">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-white/80 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-white/80 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<p class="text-sm font-medium leading-normal">Orders</p>
+</a>
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-white/80 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">thumb_up</span>
+<p class="text-sm font-medium leading-normal">Approvals</p>
+</a>
+</div>
+<div class="flex flex-col gap-1">
+<div class="px-3 py-2">
+<p class="text-xs font-semibold uppercase tracking-wider text-white/50">Admin</p>
+</div>
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-white/80 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<p class="text-sm font-medium leading-normal">User Management</p>
+</a>
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-white/80 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">manage_accounts</span>
+<p class="text-sm font-medium leading-normal">Role and Permissions</p>
+</a>
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-white/80 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">tune</span>
+<p class="text-sm font-medium leading-normal">System Settings</p>
+</a>
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-white/80 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">history</span>
+<p class="text-sm font-medium leading-normal">Audit Log</p>
+</a>
+<a class="flex items-center gap-3 rounded-md border-l-4 border-primary bg-primary/20 px-3 py-2 text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">inventory_2</span>
+<p class="text-sm font-bold leading-normal">Product Catalog</p>
+</a>
+</div>
+</nav>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-white/80 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+<a class="flex items-center gap-3 rounded-md px-3 py-2 text-white/80 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<p class="text-sm font-medium leading-normal">Logout</p>
+</a>
+</div>
+</aside>
+<main class="flex h-full flex-1 flex-col overflow-y-auto">
+<header class="flex h-16 flex-shrink-0 items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-700 bg-card-light dark:bg-card-dark px-8">
+<div class="flex flex-1 items-center gap-8">
+<label class="relative flex flex-col min-w-40 !h-10 max-w-sm">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-text-muted-light dark:text-text-muted-dark flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-text-muted-light dark:placeholder:text-text-muted-dark px-2 text-base font-normal leading-normal" placeholder="Search products, orders..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-text-muted-light dark:text-text-muted-dark transition-colors">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-text-muted-light dark:text-text-muted-dark transition-colors">
+<span class="material-symbols-outlined text-2xl">help</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsDYvIB3iTiZI-LHn9sD_QJZirmvo9Jb5ozha1bvSTaU4iyJBbYmHWLUL4aG3jL_Z2xmagx9rqWiXhZXgj5ft2T9x9Kp0TC4HNWEtUJEfvp24JWTZX3qUy5mfmq59mZ5NXKrbkoHnVjvToLFbRt10CC0qn2xIdYvBBSt0XPQPZA6TStE0-g6CBx3i3g49PS5U1fJ4Gy-NjeNwFcZXjD852WUavqWW68wvtn5UZdZzSL08C91DZ9zxykIHqyJvRboYBWMedsvPmvC4");'></div>
+</div>
+</header>
+<div class="flex flex-1 flex-col gap-6 p-8">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-text-light dark:text-text-dark text-3xl font-bold leading-tight tracking-tight">Product Catalog</p>
+<p class="text-text-muted-light dark:text-text-muted-dark text-base font-normal leading-normal">Manage cup types, sizes, materials, and other product specifications.</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] shadow-sm hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined mr-2 text-lg">add</span>
+<span class="truncate">Add New Product</span>
+</button>
+</div>
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-card-light dark:bg-card-dark p-4">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex gap-2 flex-wrap">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-gray-100 dark:bg-gray-800 pl-3 pr-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Cup Type</p>
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark text-lg">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-gray-100 dark:bg-gray-800 pl-3 pr-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Size</p>
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark text-lg">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-gray-100 dark:bg-gray-800 pl-3 pr-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Material</p>
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark text-lg">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-1.5 rounded-full bg-gray-100 dark:bg-gray-800 pl-3 pr-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Status</p>
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark text-lg">expand_more</span>
+</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-md text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-text-light dark:hover:text-text-dark transition-colors">
+<span class="material-symbols-outlined">sort</span>
+</button>
+<div class="h-6 w-px bg-gray-200 dark:bg-gray-700"></div>
+<button class="p-2 rounded-md text-primary bg-primary/10">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-2 rounded-md text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-text-light dark:hover:text-text-dark transition-colors">
+<span class="material-symbols-outlined">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<div class="flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-card-light dark:bg-card-dark shadow-sm transition-shadow hover:shadow-lg">
+<div class="aspect-square w-full bg-cover bg-center" data-alt="Brown kraft paper cup" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBNu9CppDWdc9YQTAb7Ebj8D91b2CI_cjnZU9V7nQmi-RkY0KL18AU7Ul_B0YS1CueDVP0qFi4OwbwH-RqnCGqRIKK3IWoo702LEmB0hLxhfYzsNNb631wYKNG_7hAvzD30mVFoJpmYxlU53CUcrxr49R9I4K0-n06XXNTz5e24YdN2ySWdCvB_H99ynpNmzW4u28NzFn2wbyJx6d6xoicRtLXp7anb8abV19-918gf6OripzOzB67kW-ba4rKW62_LIOcN5ZoMoj4')"></div>
+<div class="flex flex-col gap-4 p-4">
+<div>
+<h3 class="text-base font-semibold text-text-light dark:text-text-dark">12oz Double Wall Kraft Cup</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">SKU: DW-K-12</p>
+</div>
+<div class="flex flex-wrap gap-2 text-xs">
+<span class="rounded-full bg-primary/10 px-2 py-0.5 font-medium text-primary">12oz</span>
+<span class="rounded-full bg-gray-100 dark:bg-gray-800 px-2 py-0.5 font-medium text-text-muted-light dark:text-text-muted-dark">Kraft Paper</span>
+<span class="rounded-full bg-green-100 dark:bg-green-900/50 px-2 py-0.5 font-medium text-green-700 dark:text-green-300">Active</span>
+</div>
+<div class="mt-2 flex items-center justify-end gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
+<button class="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="flex h-8 w-8 items-center justify-center rounded-lg text-red-500/80 hover:bg-red-500/10 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-card-light dark:bg-card-dark shadow-sm transition-shadow hover:shadow-lg">
+<div class="aspect-square w-full bg-cover bg-center" data-alt="White paper cup" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6bJcS2Guxvq6p-DW1TioruwG9EacVzsauE0_20Q72ZEdTBIFlgFJoD8Vw0J8d_RM6YgZ-6T-v2xHpp2eOJKJ3ATqJ5hJWG8EtpA6qzTjrzd8oeJ4d9CGaqp4cxZOyD5yQnDKr-opIfRpiEatPwRNm8I33ssaNKOou_mhATBXBf2SamjtlmyHaeJMOSCO3htS2DSzsVW8gE2SO3qmTe_yPbcjgZG-TTlbc1QoMOPMjzq6iJk4MtJuJ1LtBU71N7JUiKiM5oj3-RuU')"></div>
+<div class="flex flex-col gap-4 p-4">
+<div>
+<h3 class="text-base font-semibold text-text-light dark:text-text-dark">8oz Single Wall White Cup</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">SKU: SW-W-08</p>
+</div>
+<div class="flex flex-wrap gap-2 text-xs">
+<span class="rounded-full bg-primary/10 px-2 py-0.5 font-medium text-primary">8oz</span>
+<span class="rounded-full bg-gray-100 dark:bg-gray-800 px-2 py-0.5 font-medium text-text-muted-light dark:text-text-muted-dark">Paperboard</span>
+<span class="rounded-full bg-green-100 dark:bg-green-900/50 px-2 py-0.5 font-medium text-green-700 dark:text-green-300">Active</span>
+</div>
+<div class="mt-2 flex items-center justify-end gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
+<button class="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="flex h-8 w-8 items-center justify-center rounded-lg text-red-500/80 hover:bg-red-500/10 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-card-light dark:bg-card-dark shadow-sm transition-shadow hover:shadow-lg">
+<div class="aspect-square w-full bg-cover bg-center" data-alt="Clear plastic cup" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGRB2pWI8-Hsfed6KN57Wic4FNuumqjTuEDQqMQ3HGo28sdUzd6VMwYUjLgRfThMgedl0_N-KLR-oX-FVOGNgVg26ovvMxATMpeNYrf1kQoLBFeisFFtVzIV7uODaeq9yu4dnbzZXuVFhOxwXIs4b4rmyH5IhaZDHZXRiiEk07KtAEl2KwjZOaTMBIpRU-0ibj-lR0SgB8L84yqPOdEEUOS93QHpxKd26IUzzvWFFYXabGqQOG2oX3sEutMESG7qoM8cNEvJsUoMU')"></div>
+<div class="flex flex-col gap-4 p-4">
+<div>
+<h3 class="text-base font-semibold text-text-light dark:text-text-dark">16oz PLA Cold Cup</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">SKU: CC-PLA-16</p>
+</div>
+<div class="flex flex-wrap gap-2 text-xs">
+<span class="rounded-full bg-primary/10 px-2 py-0.5 font-medium text-primary">16oz</span>
+<span class="rounded-full bg-gray-100 dark:bg-gray-800 px-2 py-0.5 font-medium text-text-muted-light dark:text-text-muted-dark">PLA Plastic</span>
+<span class="rounded-full bg-gray-200 dark:bg-gray-700 px-2 py-0.5 font-medium text-gray-600 dark:text-gray-300">Discontinued</span>
+</div>
+<div class="mt-2 flex items-center justify-end gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
+<button class="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="flex h-8 w-8 items-center justify-center rounded-lg text-red-500/80 hover:bg-red-500/10 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-card-light dark:bg-card-dark shadow-sm transition-shadow hover:shadow-lg">
+<div class="aspect-square w-full bg-cover bg-center" data-alt="A cup with a ripple texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBSxtTXg-mIWbGZ8u79hFQqMDp33sqM0De_H26bBXbiz1UCeLl4IbJYEdQ6eGHYwB2nwdJT2JqnV4_eIS-V5Ccuh0dwKUEsR_QIuhuFwECr8tZamj6h6kVVWDwvgiGRfThteCL4HgX7i0ces_SC1UtuYV641B1H1KgU7-AEQDpGeSB8qFs34NuQmcvvMSRVg-e8souXzNoz0cB9G48odP3xNXOLWcaG2izFVkog2-g0nRdlAWoyqzTT_OgqjXNBhXoGaXSXd2_B4Xs')"></div>
+<div class="flex flex-col gap-4 p-4">
+<div>
+<h3 class="text-base font-semibold text-text-light dark:text-text-dark">12oz Ripple Wall Black Cup</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">SKU: RW-B-12</p>
+</div>
+<div class="flex flex-wrap gap-2 text-xs">
+<span class="rounded-full bg-primary/10 px-2 py-0.5 font-medium text-primary">12oz</span>
+<span class="rounded-full bg-gray-100 dark:bg-gray-800 px-2 py-0.5 font-medium text-text-muted-light dark:text-text-muted-dark">Corrugated Paper</span>
+<span class="rounded-full bg-green-100 dark:bg-green-900/50 px-2 py-0.5 font-medium text-green-700 dark:text-green-300">Active</span>
+</div>
+<div class="mt-2 flex items-center justify-end gap-2 border-t border-gray-200 dark:border-gray-700 pt-4">
+<button class="flex h-8 w-8 items-center justify-center rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="flex h-8 w-8 items-center justify-center rounded-lg text-red-500/80 hover:bg-red-500/10 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Print Queue - Pacific Paper Cups and More</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1f3a5f",
+                        "primary-accent": "#4FA9C6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#14181e",
+                        "text-light": "#333333",
+                        "text-dark": "#e5e7eb",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full group/design-root overflow-x-hidden">
+<div class="absolute inset-0 z-0 opacity-20 dark:opacity-10">
+<svg class="w-full h-full" height="100%" width="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern height="120" id="wave-pattern" patternTransform="scale(1)" patternUnits="userSpaceOnUse" width="120"><path d="M 0 30 q 15 20 30 0 t 30 0 t 30 0 t 30 0 M 0 60 q 15 -20 30 0 t 30 0 t 30 0 t 30 0 M 0 90 q 15 20 30 0 t 30 0 t 30 0 t 30 0 M 0 120 q 15 -20 30 0 t 30 0 t 30 0 t 30 0" fill="none" stroke="#4FA9C6" stroke-linecap="round" stroke-width="0.5"></path></pattern></defs><rect fill="url(#wave-pattern)" height="100%" width="100%"></rect></svg>
+</div>
+<aside class="w-64 bg-primary text-white flex-shrink-0 flex flex-col z-10">
+<div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+<div class="size-8 text-white">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_330">
+<rect fill="white" height="48" width="48"></rect>
+</clipPath>
+</defs>
+</svg>
+</div>
+<h2 class="text-base font-bold leading-tight tracking-[-0.015em]">Pacific Paper Cups</h2>
+</div>
+<nav class="flex-grow p-4 flex flex-col justify-between">
+<ul class="space-y-2">
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span> Dashboard </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">folder</span> All Files </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">receipt_long</span> Orders </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">approval</span> Approvals </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">forum</span> Communication Hub </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">monitoring</span> Reporting </a></li>
+<li class="px-4 pt-4 pb-2 text-xs font-bold uppercase text-white/40">Production</li>
+<li><a class="relative flex items-center gap-3 px-4 py-2 rounded-md text-sm font-bold text-white bg-white/10" href="#">
+<div class="absolute left-0 top-0 h-full w-1 bg-primary-accent rounded-r-full"></div>
+<span class="material-symbols-outlined text-xl">print</span> Print Queue </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">conveyor_belt</span> In Production </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">local_shipping</span> Shipped </a></li>
+</ul>
+<div class="pt-4 mt-auto">
+<ul class="space-y-2 pt-4 border-t border-white/10">
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">help</span> Help </a></li>
+<li><a class="flex items-center gap-3 px-4 py-2 rounded-md text-sm font-medium text-white/70 hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">support</span> Support </a></li>
+</ul>
+</div>
+</nav>
+</aside>
+<div class="flex-1 flex flex-col relative z-10">
+<header class="flex items-center justify-between whitespace-nowrap bg-background-light dark:bg-background-dark px-6 py-3 text-text-light dark:text-text-dark shadow-sm border-b border-border-light dark:border-border-dark">
+<div class="flex flex-1">
+<div class="relative w-full max-w-lg">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-light/50 dark:text-text-dark/50 text-xl">search</span>
+<input class="w-full rounded-lg bg-white dark:bg-black/20 border border-border-light dark:border-border-dark py-2 pl-10 pr-4 text-sm text-text-light dark:text-text-dark placeholder-text-light/50 dark:placeholder-text-dark/50 focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Find customers, work orders, files..." type="text"/>
+</div>
+</div>
+<div class="flex flex-shrink-0 items-center gap-2 ml-4">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full size-10 bg-white dark:bg-black/20 hover:bg-black/5 dark:hover:bg-white/5 text-text-light dark:text-text-dark gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 border border-border-light dark:border-border-dark">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="relative group">
+<button class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary dark:border-primary-accent" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBjSiw-qw3szA7sIBm6Yv3-7XiDr4jkBD2B-7jxo5zIx_XozFp_Uwv0yQXLwKu7Q1NsmVIXvlXQfsox6MTZEloXVJHiG4U9O0ccp9WSppiVm4XCMwivSWhbOk_JKqB-XAAHc9zxStdaUL9YxhNfTaUNFkuiRpLiUsYAwswtSVTOsHu2OjSMHge0KCjz1mLaetHVVPoanIkae8ACyj1gp7Am0YHjX-LPTzZkSBTy6NSjhs0Ign2DGQWNCaBLzUkKul_yIV1YpgcbUWU");'></button>
+<div class="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-background-dark border border-border-light dark:border-border-dark rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto z-20">
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-xl">person</span> My Profile </a>
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-text-light dark:text-text-dark hover:bg-primary/10 dark:hover:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-xl">settings</span> Settings </a>
+<div class="border-t border-border-light dark:border-border-dark my-1"></div>
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20" href="#">
+<span class="material-symbols-outlined text-xl">logout</span> Logout </a>
+</div>
+</div>
+</div>
+</header>
+<main class="px-4 sm:px-6 lg:px-8 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-7xl flex-1">
+<div class="flex flex-wrap justify-between items-center gap-4 p-4">
+<h1 class="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em]">Print Queue</h1>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] gap-2 hover:opacity-90">
+<span class="material-symbols-outlined text-base">add_circle</span>
+<span class="truncate">Add New Order</span>
+</button>
+</div>
+<div class="flex flex-col md:flex-row justify-between gap-4 p-4 border-b border-border-light dark:border-border-dark">
+<div class="flex gap-3 overflow-x-auto pb-2">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-background-dark border border-border-light dark:border-border-dark pl-4 pr-2 hover:border-primary/50 dark:hover:border-primary/50">
+<p class="text-sm font-medium leading-normal">Customer</p>
+<span class="material-symbols-outlined text-lg">arrow_drop_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-background-dark border border-border-light dark:border-border-dark pl-4 pr-2 hover:border-primary/50 dark:hover:border-primary/50">
+<p class="text-sm font-medium leading-normal">Due Date</p>
+<span class="material-symbols-outlined text-lg">arrow_drop_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-background-dark border border-border-light dark:border-border-dark pl-4 pr-2 hover:border-primary/50 dark:hover:border-primary/50">
+<p class="text-sm font-medium leading-normal">Priority</p>
+<span class="material-symbols-outlined text-lg">arrow_drop_down</span>
+</button>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg text-text-light dark:text-text-dark hover:bg-primary/10 dark:hover:bg-primary/20">
+<span class="material-symbols-outlined">sort</span>
+</button>
+<div class="bg-white dark:bg-background-dark border border-border-light dark:border-border-dark rounded-lg p-0.5 flex">
+<button class="p-1.5 rounded-md text-text-light dark:text-text-dark bg-primary/10 dark:bg-primary/20">
+<span class="material-symbols-outlined">view_list</span>
+</button>
+<button class="p-1.5 rounded-md text-text-light dark:text-text-dark hover:bg-primary/10 dark:hover:bg-primary/20">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-4 py-3 @container">
+<div class="overflow-hidden rounded-lg border border-border-light dark:border-border-dark bg-white dark:bg-background-dark shadow-sm">
+<table class="w-full">
+<thead class="border-b border-border-light dark:border-border-dark">
+<tr class="bg-background-light dark:bg-black/20">
+<th class="table-col-1 px-4 py-3 text-left w-16 text-sm font-medium leading-normal">File</th>
+<th class="table-col-2 px-4 py-3 text-left text-sm font-medium leading-normal">Customer</th>
+<th class="table-col-3 px-4 py-3 text-left text-sm font-medium leading-normal">Work Order</th>
+<th class="table-col-4 px-4 py-3 text-left text-sm font-medium leading-normal">Quantity</th>
+<th class="table-col-5 px-4 py-3 text-left text-sm font-medium leading-normal">Due Date</th>
+<th class="table-col-6 px-4 py-3 text-left text-sm font-medium leading-normal">Priority</th>
+<th class="table-col-7 px-4 py-3 text-left text-sm font-medium leading-normal">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-t border-border-light dark:border-border-dark">
+<td class="h-[72px] px-4 py-2 w-16 text-sm font-normal leading-normal">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded w-10" data-alt="Thumbnail of coffee cup design for The Coffee Bean" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMZ9I3Q_kHwU03fE3S37pWFplHx-KBBenIfVEush3I7-8cuvJwpmEgqu23_3JdO_-9zETS2Ob8exVwcZEUOHUwEifu7VhUuYpm3f3hjTr1EafiEG9fpKqXvLTAkD-iKAJL_Q6n21o8JqCL2_qHNGwQIJh1-SXEXEc__MFtl6v6KVNA9g1dYufCoRkfqpVgPpDKWfRlN_tRcoQR23ojguCOhvgnUrpQG9kJD9mh4yL2PGGU0vi3vE1JU56KyrBTQfw-_g0EVDbqe04");'></div>
+</td>
+<td class="h-[72px] px-4 py-2 text-sm font-semibold leading-normal">The Coffee Bean</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">WO-12345</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">10,000</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">Oct 28, 2024</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-red-100 dark:bg-red-900/50 px-2.5 py-1 text-xs font-medium text-red-700 dark:text-red-300">
+<span class="size-1.5 rounded-full bg-red-500"></span> High
+                                            </span>
+</td>
+<td class="h-[72px] px-4 py-2 text-sm font-bold leading-normal tracking-[0.015em]">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-xs font-bold leading-normal tracking-[0.015em] hover:opacity-90">
+<span class="truncate">Start Printing</span>
+</button>
+</td>
+</tr>
+<tr class="border-t border-border-light dark:border-border-dark">
+<td class="h-[72px] px-4 py-2 w-16 text-sm font-normal leading-normal">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded w-10" data-alt="Thumbnail of coffee cup design for Morning Brew Cafe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCl-PW-ejJOWy_YT8xRHgiDqKGUULkL-TGd1TsquZAYskzFfWIRlWlu13YxVTtuCXAUTh_8bD7_dkSzr-1xKelX_y8-v_SrvAq9xtbp2u3lkpDfEvfMxPVL_uny_NY9pxkigw0tZ055ztELbEbXb4Cwkc5dWWCeKE580ueKLIYak-PVS8cbr0oj3wkGljq8aiCfbVr60Vh2fojzXO3mRZf852HXDs4A7AiDIkXVxacyp9Iiq2SDEkXmvo-cTfKAxOvnrnzsIJMHnRM");'></div>
+</td>
+<td class="h-[72px] px-4 py-2 text-sm font-semibold leading-normal">Morning Brew Cafe</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">WO-12346</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">5,000</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">Oct 29, 2024</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-yellow-100 dark:bg-yellow-900/50 px-2.5 py-1 text-xs font-medium text-yellow-700 dark:text-yellow-300">
+<span class="size-1.5 rounded-full bg-yellow-500"></span> Medium
+                                            </span>
+</td>
+<td class="h-[72px] px-4 py-2 text-sm font-bold leading-normal tracking-[0.015em]">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-xs font-bold leading-normal tracking-[0.015em] hover:opacity-90">
+<span class="truncate">Start Printing</span>
+</button>
+</td>
+</tr>
+<tr class="border-t border-border-light dark:border-border-dark">
+<td class="h-[72px] px-4 py-2 w-16 text-sm font-normal leading-normal">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded w-10" data-alt="Thumbnail of paper cup design for Quick Eats" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDrrGO0xJmQmRQnv7A_4cnOq7Lnjnf0bPj7Wz-_N9uXWPe0Xft3toSK9DnG2VHE8vIzjR29e3ylgQnLRu2pVVPh7DW3YCuau21i8ZHY6oKQsvlu78I99RPsDNcPJqqNYA5sCGQ2lXXI8jwTPxhP6MioszVkIMKahAQr0TyEUqr9EVG_LFdbS5AK6zE_mrQ2Jh8_CxXiq02RpIABhuRhsOBPSOl6wNjAXXsfy5QZG_rpUmjtiRuFztPo1ne5a5w86JcXeTGk2yl3KQQ");'></div>
+</td>
+<td class="h-[72px] px-4 py-2 text-sm font-semibold leading-normal">Quick Eats</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">WO-12347</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">25,000</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">Oct 30, 2024</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-yellow-100 dark:bg-yellow-900/50 px-2.5 py-1 text-xs font-medium text-yellow-700 dark:text-yellow-300">
+<span class="size-1.5 rounded-full bg-yellow-500"></span> Medium
+                                            </span>
+</td>
+<td class="h-[72px] px-4 py-2 text-sm font-bold leading-normal tracking-[0.015em]">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-xs font-bold leading-normal tracking-[0.015em] hover:opacity-90">
+<span class="truncate">Start Printing</span>
+</button>
+</td>
+</tr>
+<tr class="border-t border-border-light dark:border-border-dark">
+<td class="h-[72px] px-4 py-2 w-16 text-sm font-normal leading-normal">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded w-10" data-alt="Thumbnail of coffee cup design for The Daily Grind" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBu-vOQLnx-QW_pFaxwobfmQL8uwGI8g6yURMDhBfFIoMC0Yf2lMfj2zvKJjphbXUjajTSh4Pai6Tw1WTTYIVp1tqR-OSH9CfwqknxCbY4X-462tWZunEKEPYEyrOxhXpLnuFwVdU9ZwEcnoLvas98YsTH2sgX9C_FPnHIPAZr9TbEKD0cxUjxaDokH2i1M_RobI0SFu1SHxFANHDKYL55VAw_z5eCsqCMq7-KoBz5ZEPiCGat-sZYAtApqgR_exsNUYZmLE0R11tE");'></div>
+</td>
+<td class="h-[72px] px-4 py-2 text-sm font-semibold leading-normal">The Daily Grind</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">WO-12348</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">15,000</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">Nov 01, 2024</td>
+<td class="h-[72px] px-4 py-2 text-sm font-normal leading-normal">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-1 text-xs font-medium text-green-700 dark:text-green-300">
+<span class="size-1.5 rounded-full bg-green-500"></span> Low
+                                            </span>
+</td>
+<td class="h-[72px] px-4 py-2 text-sm font-bold leading-normal tracking-[0.015em]">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-xs font-bold leading-normal tracking-[0.015em] hover:opacity-90">
+<span class="truncate">Start Printing</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

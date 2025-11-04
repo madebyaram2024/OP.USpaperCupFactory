@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pacific Paper Cups - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1f3a60",
+              "secondary": "#4FA9C6",
+              "background-light": "#F7F9FA",
+              "background-dark": "#14181e",
+              "text-light": "#333333",
+              "text-dark": "#f1f2f4",
+              "border-light": "#dde0e3",
+              "border-dark": "#303742"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+      .subtle-wave-bg {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%231f3a60' fill-opacity='0.03' d='M0,128L48,138.7C96,149,192,171,288,170.7C384,171,480,149,576,128C672,107,768,85,864,101.3C960,117,1056,171,1152,186.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3e%3c/path%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: 100% auto;
+      }
+      .dark .subtle-wave-bg {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%234FA9C6' fill-opacity='0.05' d='M0,128L48,138.7C96,149,192,171,288,170.7C384,171,480,149,576,128C672,107,768,85,864,101.3C960,117,1056,171,1152,186.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'%3e%3c/path%3e%3c/svg%3e");
+      }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden lg:flex-row">
+<aside class="sticky top-0 z-50 flex h-screen w-64 shrink-0 flex-col bg-primary text-white transition-transform duration-300 ease-in-out">
+<div class="flex h-[76px] items-center gap-4 border-b border-white/10 px-6">
+<svg class="size-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M39.5563 34.1455V13.8546C39.5563 15.708 36.8773 17.3437 32.7927 18.3189C30.2914 18.916 27.263 19.2655 24 19.2655C20.737 19.2655 17.7086 18.916 15.2073 18.3189C11.1227 17.3437 8.44365 15.708 8.44365 13.8546V34.1455C8.44365 35.9988 11.1227 37.6346 15.2073 38.6098C17.7086 39.2069 20.737 39.5564 24 39.5564C27.263 39.5564 30.2914 39.2069 32.7927 38.6098C36.8773 37.6346 39.5563 35.9988 39.5563 34.1455Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M10.4485 13.8519C10.4749 13.9271 10.6203 14.246 11.379 14.7361C12.298 15.3298 13.7492 15.9145 15.6717 16.3735C18.0007 16.9296 20.8712 17.2655 24 17.2655C27.1288 17.2655 29.9993 16.9296 32.3283 16.3735C34.2508 15.9145 35.702 15.3298 36.621 14.7361C37.3796 14.246 37.5251 13.9271 37.5515 13.8519C37.5287 13.7876 37.4333 13.5973 37.0635 13.2931C36.5266 12.8516 35.6288 12.3647 34.343 11.9175C31.79 11.0295 28.1333 10.4437 24 10.4437C19.8667 10.4437 16.2099 11.0295 13.657 11.9175C12.3712 12.3647 11.4734 12.8516 10.9365 13.2931C10.5667 13.5973 10.4713 13.7876 10.4485 13.8519ZM37.5563 18.7877C36.3176 19.3925 34.8502 19.8839 33.2571 20.2642C30.5836 20.9025 27.3973 21.2655 24 21.2655C20.6027 21.2655 17.4164 20.9025 14.7429 20.2642C13.1498 19.8839 11.6824 19.3925 10.4436 18.7877V34.1275C10.4515 34.1545 10.5427 34.4867 11.379 35.027C12.298 35.6207 13.7492 36.2054 15.6717 36.6644C18.0007 37.2205 20.8712 37.5564 24 37.5564C27.1288 37.5564 29.9993 37.2205 32.3283 36.6644C34.2508 36.2054 35.702 35.6207 36.621 35.027C37.4573 34.4867 37.5485 34.1546 37.5563 34.1275V18.7877ZM41.5563 13.8546V34.1455C41.5563 36.1078 40.158 37.5042 38.7915 38.3869C37.3498 39.3182 35.4192 40.0389 33.2571 40.5551C30.5836 41.1934 27.3973 41.5564 24 41.5564C20.6027 41.5564 17.4164 41.1934 14.7429 40.5551C12.5808 40.0389 10.6502 39.3182 9.20848 38.3869C7.84205 37.5042 6.44365 36.1078 6.44365 34.1455L6.44365 13.8546C6.44365 12.2684 7.37223 11.0454 8.39581 10.2036C9.43325 9.3505 10.8137 8.67141 12.343 8.13948C15.4203 7.06909 19.5418 6.44366 24 6.44366C28.4582 6.44366 32.5797 7.06909 35.657 8.13948C37.1863 8.67141 38.5667 9.3505 39.6042 10.2036C40.6278 11.0454 41.5563 12.2684 41.5563 13.8546Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Pacific Paper Cups</h2>
+</div>
+<nav class="flex-1 px-4 py-6">
+<ul class="flex flex-col gap-2">
+<li>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-base font-bold text-white transition-colors relative border-l-4 border-secondary bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-base font-medium text-white/70 transition-colors hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">folder</span>
+<span>Work Orders</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-base font-medium text-white/70 transition-colors hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">groups</span>
+<span>Customers</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-base font-medium text-white/70 transition-colors hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+<span>Files</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-base font-medium text-white/70 transition-colors hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">forum</span>
+<span>Communication Hub</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-base font-medium text-white/70 transition-colors hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">analytics</span>
+<span>Reporting</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="mt-auto px-4 py-6">
+<div class="mb-4 border-t border-white/10"></div>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-base font-medium text-white/70 transition-colors hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">help</span>
+<span>Help &amp; Support</span>
+</a>
+<a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-base font-medium text-white/70 transition-colors hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 flex flex-col w-full">
+<header class="flex sticky top-0 z-40 items-center justify-between whitespace-nowrap bg-background-light dark:bg-background-dark/95 backdrop-blur-sm border-b border-border-light dark:border-border-dark px-6 py-3 gap-4">
+<div class="flex-1 max-w-xl">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-light/60 dark:text-text-dark/60">search</span>
+<input class="w-full h-10 rounded-lg bg-background-light/80 dark:bg-white/5 pl-10 pr-4 text-text-light dark:text-text-dark placeholder:text-text-light/60 dark:placeholder:text-text-dark/60 focus:bg-white dark:focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-secondary/80 transition-colors border border-border-light dark:border-border-dark" placeholder="Search customers, orders, files..." type="search"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-white dark:bg-white/10 text-text-light dark:text-text-dark hover:bg-gray-100 dark:hover:bg-white/20 transition-colors border border-border-light dark:border-border-dark">
+<span class="material-symbols-outlined text-xl">account_circle</span>
+</button>
+<div class="absolute right-0 top-full mt-2 w-56 origin-top-right rounded-lg bg-white dark:bg-primary shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden group-hover:block">
+<div class="py-1">
+<div class="px-4 py-3">
+<p class="text-sm font-semibold text-text-light dark:text-white">Jane Doe</p>
+<p class="text-xs text-text-light/70 dark:text-white/70 truncate">jane.doe@example.com</p>
+</div>
+<div class="border-t border-border-light dark:border-white/10"></div>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm text-text-light dark:text-white/70 hover:bg-gray-100 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<span>My Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm text-text-light dark:text-white/70 hover:bg-gray-100 dark:hover:bg-white/10" href="./account-settings.html">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span>Account Settings</span>
+</a>
+<div class="border-t border-border-light dark:border-white/10"></div>
+<a class="flex items-center gap-3 px-4 py-2.5 text-sm text-text-light dark:text-white/70 hover:bg-gray-100 dark:hover:bg-white/10" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex h-full grow flex-col subtle-wave-bg">
+<div class="mx-auto flex w-full max-w-7xl flex-1 flex-col p-6 lg:p-8">
+<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+<div>
+<p class="text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Welcome back, Jane!</p>
+<p class="text-text-light/70 dark:text-text-dark/70 mt-1">Here's your production overview for today.</p>
+</div>
+<div class="flex flex-1 gap-3 flex-wrap justify-start md:justify-end">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded h-10 px-4 bg-secondary text-white text-sm font-bold leading-normal tracking-[0.015em] shadow-sm hover:bg-secondary/90 transition-colors">
+<span class="material-symbols-outlined text-base">add_circle</span>
+<span class="truncate">Create New Customer</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] shadow-sm hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-base">add</span>
+<span class="truncate">Create New Work Order</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+<div class="flex flex-col gap-2 rounded-lg p-6 bg-white dark:bg-background-dark/80 border border-border-light dark:border-border-dark shadow-sm">
+<p class="text-base font-medium leading-normal">Today's Orders</p>
+<p class="tracking-light text-4xl font-bold leading-tight">12</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-6 bg-white dark:bg-background-dark/80 border border-border-light dark:border-border-dark shadow-sm">
+<p class="text-base font-medium leading-normal">This Week's Orders</p>
+<p class="tracking-light text-4xl font-bold leading-tight">56</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-6 bg-white dark:bg-background-dark/80 border border-border-light dark:border-border-dark shadow-sm">
+<p class="text-base font-medium leading-normal">Pending Approvals</p>
+<p class="tracking-light text-4xl font-bold leading-tight text-orange-500">8</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-3 flex flex-col gap-4 rounded-lg bg-white dark:bg-background-dark/80 border border-border-light dark:border-border-dark p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Order Trends</h2>
+<div class="flex items-center gap-2 rounded-lg bg-background-light dark:bg-background-dark p-1">
+<button class="px-3 py-1 text-sm font-semibold rounded-md bg-white dark:bg-border-dark shadow-sm text-primary dark:text-text-dark">Weekly</button>
+<button class="px-3 py-1 text-sm font-medium text-text-light/70 dark:text-text-dark/70 hover:text-primary dark:hover:text-white transition-colors">Monthly</button>
+<button class="px-3 py-1 text-sm font-medium text-text-light/70 dark:text-text-dark/70 hover:text-primary dark:hover:text-white transition-colors">Yearly</button>
+</div>
+</div>
+<div class="h-80 w-full"><canvas id="orderTrendsChart"></canvas></div>
+</div>
+</div>
+<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-4 rounded-lg bg-white dark:bg-background-dark/80 border border-border-light dark:border-border-dark shadow-sm overflow-hidden">
+<div class="flex items-center justify-between p-6 pb-4">
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Active Work Orders</h2>
+<a class="text-sm font-bold text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="border-b border-border-light dark:border-border-dark">
+<tr>
+<th class="px-6 py-3 font-semibold">Order ID</th>
+<th class="px-6 py-3 font-semibold">Customer</th>
+<th class="px-6 py-3 font-semibold">Due Date</th>
+<th class="px-6 py-3 font-semibold">Status</th>
+<th class="px-6 py-3 font-semibold">Progress</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-border-light dark:border-border-dark last:border-b-0 hover:bg-background-light dark:hover:bg-background-dark">
+<td class="px-6 py-4 font-medium">#5823</td>
+<td class="px-6 py-4">The Coffee House</td>
+<td class="px-6 py-4">Oct 28, 203</td>
+<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/50 px-2.5 py-0.5 text-xs font-semibold text-blue-800 dark:text-blue-200">In Production</span></td>
+<td class="px-6 py-4">
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 75%"></div>
+</div>
+</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark last:border-b-0 hover:bg-background-light dark:hover:bg-background-dark">
+<td class="px-6 py-4 font-medium">#5822</td>
+<td class="px-6 py-4">Boba Time</td>
+<td class="px-6 py-4">Oct 26, 2023</td>
+<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900/50 px-2.5 py-0.5 text-xs font-semibold text-orange-800 dark:text-orange-200">Pending Approval</span></td>
+<td class="px-6 py-4">
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-orange-500 h-2 rounded-full" style="width: 25%"></div>
+</div>
+</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark last:border-b-0 hover:bg-background-light dark:hover:bg-background-dark">
+<td class="px-6 py-4 font-medium">#5821</td>
+<td class="px-6 py-4">Daily Grind Cafe</td>
+<td class="px-6 py-4">Oct 30, 2023</td>
+<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-purple-100 dark:bg-purple-900/50 px-2.5 py-0.5 text-xs font-semibold text-purple-800 dark:text-purple-200">Design Phase</span></td>
+<td class="px-6 py-4">
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-purple-500 h-2 rounded-full" style="width: 50%"></div>
+</div>
+</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark last:border-b-0 hover:bg-background-light dark:hover:bg-background-dark">
+<td class="px-6 py-4 font-medium">#5820</td>
+<td class="px-6 py-4">Quick Eats</td>
+<td class="px-6 py-4">Nov 02, 2023</td>
+<td class="px-6 py-4"><span class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/50 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:text-green-200">Shipped</span></td>
+<td class="px-6 py-4">
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+<div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-lg bg-white dark:bg-background-dark/80 border border-border-light dark:border-border-dark p-6 shadow-sm">
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">Recent Activity</h2>
+<ul class="space-y-4">
+<li class="flex items-start gap-4">
+<div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-300">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="text-sm font-medium">Order #5822 approved by Boba Time.</p>
+<p class="text-xs text-text-light/60 dark:text-text-dark/60">5 minutes ago</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300">
+<span class="material-symbols-outlined">upload_file</span>
+</div>
+<div>
+<p class="text-sm font-medium">New design files uploaded for Order #5821.</p>
+<p class="text-xs text-text-light/60 dark:text-text-dark/60">1 hour ago</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-300">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div>
+<p class="text-sm font-medium">New customer "Boba Time" created.</p>
+<p class="text-xs text-text-light/60 dark:text-text-dark/60">3 hours ago</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800/50 text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div>
+<p class="text-sm font-medium">Order #5819 has been shipped.</p>
+<p class="text-xs text-text-light/60 dark:text-text-dark/60">Yesterday</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctx = document.getElementById('orderTrendsChart');
+      if (!ctx) return;
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+      const textColor = isDarkMode ? '#f1f2f4' : '#333333';
+      const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 320);
+      gradient.addColorStop(0, 'rgba(79, 169, 198, 0.3)');
+      gradient.addColorStop(1, 'rgba(79, 169, 198, 0)');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          datasets: [{
+            label: 'Orders',
+            data: [8, 12, 9, 15, 11, 14, 18],
+            borderColor: '#4FA9C6',
+            backgroundColor: gradient,
+            borderWidth: 3,
+            pointBackgroundColor: '#4FA9C6',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#4FA9C6',
+            pointRadius: 5,
+            pointHoverRadius: 7,
+            pointBorderWidth: 2,
+            pointHoverBorderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              enabled: true,
+              backgroundColor: '#1f3a60',
+              titleColor: '#fff',
+              bodyColor: '#fff',
+              borderColor: '#4FA9C6',
+              borderWidth: 1,
+              padding: 10,
+              displayColors: false,
+              callbacks: {
+                label: function(context) {
+                    let label = context.dataset.label || '';
+                    if (label) {
+                        label += ': ';
+                    }
+                    if (context.parsed.y !== null) {
+                        label += context.parsed.y;
+                    }
+                    return label;
+                }
+              }
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: gridColor,
+                drawBorder: false,
+              },
+              ticks: {
+                 color: textColor,
+                 font: {
+                    family: "'Inter', sans-serif"
+                 }
+              }
+            },
+            x: {
+              grid: {
+                display: false,
+                drawBorder: false,
+              },
+              ticks: {
+                 color: textColor,
+                 font: {
+                    family: "'Inter', sans-serif"
+                 }
+              }
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body></html>

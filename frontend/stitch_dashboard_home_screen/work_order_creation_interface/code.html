@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Work Order</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        .form-input {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+        .wave-bg {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%23e0f7ff' fill-opacity='0.4' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,138.7C960,117,1056,107,1152,122.7C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3e%3c/path%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": {
+                DEFAULT: "#1f3a5f",
+                light: "#4FA9C6"
+              },
+              "background-light": "#f6f7f8",
+              "background-dark": "#14181e",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display">
+<div class="relative flex min-h-screen w-full bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<div class="absolute inset-0 wave-bg dark:hidden"></div>
+<aside class="w-64 flex-shrink-0 bg-primary dark:bg-primary text-white flex flex-col z-10">
+<div class="flex items-center gap-3 px-6 h-16 border-b border-white/10">
+<div class="size-8">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clipPath id="clip0_6_330">
+<rect fill="white" height="48" width="48"></rect>
+</clipPath>
+</defs>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Pacific Paper</h2>
+</div>
+<nav class="flex-1 flex flex-col justify-between p-4">
+<div class="space-y-2">
+<a class="flex items-center gap-3 rounded-md px-4 py-2.5 text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-white transition-colors relative border-l-4 border-primary-light bg-primary-light/20" href="#">
+<span class="material-symbols-outlined">add_box</span>
+<span class="text-sm font-bold">Work Orders</span>
+</a>
+<a class="flex items-center gap-3 rounded-md px-4 py-2.5 text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 rounded-md px-4 py-2.5 text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-sm font-medium">File Manager</span>
+</a>
+<a class="flex items-center gap-3 rounded-md px-4 py-2.5 text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="text-sm font-medium">Communication Hub</span>
+</a>
+<a class="flex items-center gap-3 rounded-md px-4 py-2.5 text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-medium">Reporting</span>
+</a>
+<a class="flex items-center gap-3 rounded-md px-4 py-2.5 text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</div>
+<div class="space-y-2 border-t border-white/10 pt-4">
+<a class="flex items-center gap-3 rounded-md px-4 py-2.5 text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="text-sm font-medium">Help &amp; Support</span>
+</a>
+<a class="flex items-center gap-3 rounded-md px-4 py-2.5 text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</nav>
+</aside>
+<div class="flex flex-1 flex-col z-10">
+<header class="flex h-16 items-center justify-between whitespace-nowrap bg-white/80 dark:bg-gray-900/50 backdrop-blur-sm px-4 sm:px-10 border-b border-gray-200 dark:border-gray-800">
+<div class="flex-1 max-w-xl">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">search</span>
+<input class="w-full rounded-md border-0 bg-background-light dark:bg-gray-800 py-2 pl-10 pr-4 text-gray-800 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:bg-white dark:focus:bg-gray-900 focus:ring-2 focus:ring-inset focus:ring-primary-light" placeholder="Search customers, work orders, files..." type="search"/>
+</div>
+</div>
+<div class="flex items-center gap-4 ml-4">
+<button class="relative rounded-full p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-light/50">
+<span class="material-symbols-outlined">
+                            notifications
+                        </span>
+</button>
+<div class="relative group">
+<button class="h-8 w-8 rounded-full bg-primary-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
+<img class="h-full w-full rounded-full object-cover" data-alt="User avatar image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmF0N4VU-FSuW1yxjzSsWTGFZxRE_PJFDVy7URvDIbOZ9VHkHd14lQsGMEdntRwYJH9kJpJnqMGRyx8ZheGFFbGAY8IoRZkDnuI0myASPT8yXP8V0auGY-oewJQPQuDP-9vyg7AmSQXUUb3EeRdayRPV-EPMosZWD0jy7UGshUfpU5MKiuuMXca50tk8YZbEcNBKIDCeiwuV_2JMPAmBBLKtYzO-ZkVTt0VojgFhhdP2TNKaIqFQEy2dmeVo0hVZCgQn2hXj6G4ko"/>
+</button>
+<div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 invisible group-focus-within:visible group-hover:visible transition-all duration-300 opacity-0 group-focus-within:opacity-100 group-hover:opacity-100 transform origin-top-right -translate-y-2 group-focus-within:translate-y-0 group-hover:translate-y-0">
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" href="/account-settings-page.html">
+<span class="material-symbols-outlined text-base">person</span>
+<span>My Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" href="/account-settings-page.html">
+<span class="material-symbols-outlined text-base">settings</span>
+<span>Settings</span>
+</a>
+<div class="border-t border-gray-100 dark:border-gray-700 my-1"></div>
+<a class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700" href="#">
+<span class="material-symbols-outlined text-base">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-5 sm:py-10 overflow-y-auto">
+<div class="layout-content-container flex flex-col w-full max-w-4xl flex-1 px-4 sm:px-6 md:px-8">
+<div class="flex flex-wrap justify-between gap-4 p-4 items-center">
+<p class="text-[#121416] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Create New Work Order</p>
+</div>
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between">
+<p class="text-[#121416] dark:text-gray-300 text-base font-medium leading-normal">Step 1 of 3: Customer &amp; Order Info</p>
+</div>
+<div class="rounded-full bg-gray-200 dark:bg-gray-700">
+<div class="h-2 rounded-full bg-primary-light" style="width: 33%;"></div>
+</div>
+</div>
+<section class="mt-8">
+<h2 class="text-[#121416] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Order Details</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 p-4">
+<div class="flex flex-col py-3">
+<p class="text-[#121416] dark:text-gray-300 text-base font-medium leading-normal pb-2">Work Order Number</p>
+<div class="flex w-full flex-1 items-center rounded-lg bg-gray-100 dark:bg-gray-800 h-14 px-4">
+<span class="text-gray-500 dark:text-gray-400 font-mono text-base">CUST-0218-072624</span>
+<span class="material-symbols-outlined ml-auto text-gray-400 dark:text-gray-500">lock</span>
+</div>
+</div>
+<div class="flex flex-col py-3">
+<p class="text-[#121416] dark:text-gray-300 text-base font-medium leading-normal pb-2">Customer Selection</p>
+<div class="relative flex w-full flex-1 items-stretch">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">search</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#121416] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-light border-none bg-white dark:bg-gray-900 h-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 pl-12 pr-4 text-base font-normal leading-normal ring-1 ring-gray-200 dark:ring-gray-700" placeholder="Search for a customer..."/>
+</div>
+</div>
+<div class="flex flex-col py-3">
+<p class="text-[#121416] dark:text-gray-300 text-base font-medium leading-normal pb-2">Quantity</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#121416] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-light border-none bg-white dark:bg-gray-900 h-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-4 text-base font-normal leading-normal ring-1 ring-gray-200 dark:ring-gray-700" placeholder="e.g., 50000" type="number"/>
+</div>
+<div class="flex flex-col py-3">
+<p class="text-[#121416] dark:text-gray-300 text-base font-medium leading-normal pb-2">Cup Type</p>
+<div class="relative flex w-full flex-1 items-stretch">
+<select class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#121416] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-light border-none bg-white dark:bg-gray-900 h-14 p-4 pr-10 text-base font-normal leading-normal ring-1 ring-gray-200 dark:ring-gray-700">
+<option>8oz Single Wall</option>
+<option>12oz Double Wall</option>
+<option>16oz Ripple Cup</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col py-3 md:col-span-2">
+<p class="text-[#121416] dark:text-gray-300 text-base font-medium leading-normal pb-2">Specifications / Special Instructions</p>
+<textarea class="form-textarea flex w-full min-w-0 flex-1 resize-y overflow-hidden rounded-lg text-[#121416] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-light border-none bg-white dark:bg-gray-900 min-h-28 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-4 text-base font-normal leading-normal ring-1 ring-gray-200 dark:ring-gray-700" placeholder="Enter any specific requirements..."></textarea>
+</div>
+<div class="flex flex-col py-3">
+<p class="text-[#121416] dark:text-gray-300 text-base font-medium leading-normal pb-2">Delivery Date</p>
+<div class="relative flex w-full flex-1 items-stretch">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#121416] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-light border-none bg-white dark:bg-gray-900 h-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-4 pr-12 text-base font-normal leading-normal ring-1 ring-gray-200 dark:ring-gray-700" type="date" value="2024-08-15"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 pointer-events-none">calendar_today</span>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-8">
+<h2 class="text-[#121416] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Required Approval Stages</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+<label class="flex items-center gap-3 p-4 rounded-lg bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-700 cursor-pointer hover:ring-primary-light transition-shadow">
+<input class="form-checkbox h-5 w-5 rounded text-primary-light border-gray-300 dark:border-gray-600 focus:ring-primary-light bg-gray-100 dark:bg-gray-800" type="checkbox"/>
+<span class="text-base font-medium text-[#121416] dark:text-gray-300">Design / Pre-Press</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-lg bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-700 cursor-pointer hover:ring-primary-light transition-shadow">
+<input class="form-checkbox h-5 w-5 rounded text-primary-light border-gray-300 dark:border-gray-600 focus:ring-primary-light bg-gray-100 dark:bg-gray-800" type="checkbox"/>
+<span class="text-base font-medium text-[#121416] dark:text-gray-300">Printing</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-lg bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-700 cursor-pointer hover:ring-primary-light transition-shadow">
+<input class="form-checkbox h-5 w-5 rounded text-primary-light border-gray-300 dark:border-gray-600 focus:ring-primary-light bg-gray-100 dark:bg-gray-800" type="checkbox"/>
+<span class="text-base font-medium text-[#121416] dark:text-gray-300">Production / Assembly</span>
+</label>
+<label class="flex items-center gap-3 p-4 rounded-lg bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-700 cursor-pointer hover:ring-primary-light transition-shadow">
+<input class="form-checkbox h-5 w-5 rounded text-primary-light border-gray-300 dark:border-gray-600 focus:ring-primary-light bg-gray-100 dark:bg-gray-800" type="checkbox"/>
+<span class="text-base font-medium text-[#121416] dark:text-gray-300">Shipping</span>
+</label>
+</div>
+</section>
+<section class="mt-8">
+<h2 class="text-[#121416] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Attach Files &amp; Instructions</h2>
+<div class="p-4">
+<div class="flex flex-col items-center justify-center gap-4 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 p-10 text-center hover:border-primary-light transition-colors">
+<div class="rounded-full bg-primary-light/10 p-3">
+<span class="material-symbols-outlined text-3xl text-primary-light">upload_file</span>
+</div>
+<p class="text-lg font-semibold text-[#121416] dark:text-white">Drag &amp; drop files here</p>
+<p class="text-gray-500 dark:text-gray-400">or</p>
+<button class="rounded-lg bg-primary/10 dark:bg-primary-light/20 px-4 py-2 text-sm font-semibold text-primary dark:text-primary-light hover:bg-primary/20 dark:hover:bg-primary-light/30 transition-colors">Browse Files</button>
+<p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Max file size: 50MB</p>
+</div>
+</div>
+</section>
+<div class="flex flex-wrap items-center justify-end gap-4 p-4 mt-10 border-t border-gray-200 dark:border-gray-700">
+<button class="rounded-lg px-6 py-3 text-base font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Cancel</button>
+<button class="rounded-lg bg-primary/20 dark:bg-primary/50 px-6 py-3 text-base font-semibold text-primary dark:text-white/90 hover:bg-primary/30 dark:hover:bg-primary/60 transition-colors">Save as Draft</button>
+<button class="rounded-lg bg-primary-light px-6 py-3 text-base font-semibold text-white shadow-sm hover:opacity-90 transition-opacity">Create Work Order</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

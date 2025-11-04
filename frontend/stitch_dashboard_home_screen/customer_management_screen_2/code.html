@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Management - Pacific Paper Cups and More</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1f3a60",
+                        "pacific-blue": "#4FA9C6",
+                        "background-light": "#f4f7f9",
+                        "background-dark": "#14181e",
+                        "neutral-white": "#FFFFFF",
+                        "text-primary": "#121416",
+                        "text-secondary": "#6a7381",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .wave-bg {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%234FA9C6' fill-opacity='0.05' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,138.7C960,117,1056,107,1152,112C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3e%3c/path%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+        }
+        .dark .wave-bg {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3e%3cpath fill='%234FA9C6' fill-opacity='0.08' d='M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,138.7C960,117,1056,107,1152,112C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3e%3c/path%3e%3c/svg%3e");
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary">
+<div class="relative flex h-screen w-full group/design-root overflow-hidden">
+<aside class="w-64 bg-primary text-white flex flex-col flex-shrink-0 z-20">
+<div class="flex h-16 items-center gap-3 px-6 border-b border-white/10">
+<div class="size-8">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Pacific Paper</h2>
+</div>
+<div class="flex flex-col flex-1">
+<nav class="flex-1 px-4 py-6 space-y-2">
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="relative flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/10 text-white transition-colors" href="#">
+<div class="absolute left-0 top-0 h-full w-1 rounded-r-full bg-pacific-blue"></div>
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm font-bold">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">folder_managed</span>
+<span class="text-sm font-medium">Work Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span class="text-sm font-medium">Production</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">forum</span>
+<span class="text-sm font-medium">Communication Hub</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+<span class="text-sm font-medium">Shipping</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">bar_chart</span>
+<span class="text-sm font-medium">Reporting</span>
+</a>
+</nav>
+<div class="mt-auto p-4 border-t border-white/10">
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">help_outline</span>
+<span class="text-sm font-medium">Help</span>
+</a>
+</div>
+</div>
+</aside>
+<div class="flex flex-1 flex-col relative wave-bg">
+<header class="flex h-16 items-center justify-end whitespace-nowrap bg-neutral-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 px-6 shadow-sm z-10">
+<div class="flex flex-1 items-center gap-6">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary/80 dark:text-gray-400 text-xl">search</span>
+<input class="form-input h-10 w-full rounded-lg bg-background-light dark:bg-background-dark text-text-primary dark:text-white placeholder:text-text-secondary dark:placeholder:text-gray-400 border-gray-200 dark:border-gray-700 pl-10 pr-4 text-sm focus:ring-2 focus:ring-pacific-blue focus:border-pacific-blue" placeholder="Search customer, order, file..." type="search"/>
+</div>
+<div class="flex ml-auto items-center gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 text-text-secondary hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="relative group/user-menu">
+<button class="ml-2 bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-transparent group-hover/user-menu:ring-pacific-blue transition-all" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNfq5dU805V8IoeKHSLx3Pl4T3L2KN3cM-RfP8WvBNgkTscSGVrFLjWtsVac9eo0s59b9cn-wD2Plu8fXQUsubKcJmN01oWvs2remK0F85x6I_LzETyXhkHtaxkHNJC-9XPvvJyJPmAQKplpsZ3g2nlxmvSWm31n5uZI3JMRFlkZnt1NyLAxQOXIJWiapk7olmyGO8uAYa4PmiKnGUoMth_bDMFMk55xtd1AYE0rWeiSy75jrczebyHk-eFxGUYDcXcVo7KJHpg2c");'></button>
+<div class="absolute top-full right-0 mt-2 w-56 bg-neutral-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-1.5 opacity-0 invisible group-hover/user-menu:opacity-100 group-hover/user-menu:visible transition-all duration-200">
+<div class="px-3 py-2 border-b border-gray-200 dark:border-gray-700">
+<p class="text-sm font-semibold text-text-primary dark:text-white">Alex Chen</p>
+<p class="text-xs text-text-secondary dark:text-gray-400">alex.chen@pacific.com</p>
+</div>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm text-text-secondary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" href="/account-settings-page">
+<span class="material-symbols-outlined text-xl">account_circle</span>
+<span>My Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm text-text-secondary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" href="/account-settings-page">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 border-t border-gray-200 dark:border-gray-700 mt-1" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<div class="w-full max-w-md flex-shrink-0 border-r border-gray-200 dark:border-gray-700 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm flex flex-col">
+<div class="p-6 border-b border-gray-200 dark:border-gray-700">
+<div class="flex flex-wrap justify-between gap-4 items-center">
+<p class="text-text-primary dark:text-white text-3xl font-bold leading-tight tracking-[-0.033em]">Customers</p>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-pacific-blue text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-pacific-blue/90 transition-colors">
+<span class="truncate">Add New Customer</span>
+</button>
+</div>
+<div class="mt-4">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-neutral-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+<div class="text-text-secondary dark:text-gray-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-primary dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-text-secondary dark:placeholder:text-gray-400 pl-2 text-base font-normal leading-normal" placeholder="Search by name or ID..." value=""/>
+</div>
+</label>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-3">
+<div class="flex items-stretch justify-between gap-4 rounded-lg bg-pacific-blue/10 border-2 border-pacific-blue p-4 shadow-[0_2px_8px_rgba(0,0,0,0.05)] cursor-pointer">
+<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-primary dark:text-white text-base font-bold leading-tight">The Cup Company</p>
+<p class="text-text-secondary dark:text-gray-300 text-sm font-normal leading-normal">CUST-00123</p>
+</div>
+<div class="flex gap-6 text-sm">
+<div>
+<p class="text-text-secondary dark:text-gray-400 text-xs">Total Orders</p>
+<p class="font-medium text-text-primary dark:text-white">24</p>
+</div>
+<div>
+<p class="text-text-secondary dark:text-gray-400 text-xs">Last Order</p>
+<p class="font-medium text-text-primary dark:text-white">03/15/2024</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-stretch justify-between gap-4 rounded-lg bg-neutral-white dark:bg-gray-800 p-4 shadow-[0_2px_8px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-lg hover:ring-2 hover:ring-pacific-blue/50 transition-all">
+<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-text-primary dark:text-white text-base font-bold leading-tight">Java House</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">CUST-00124</p>
+</div>
+<div class="flex gap-6 text-sm">
+<div>
+<p class="text-text-secondary dark:text-gray-400 text-xs">Total Orders</p>
+<p class="font-medium text-text-primary dark:text-white">12</p>
+</div>
+<div>
+<p class="text-text-secondary dark:text-gray-400 text-xs">Last Order</p>
+<p class="font-medium text-text-primary dark:text-white">02/28/2024</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-stretch justify-between gap-4 rounded-lg bg-neutral-white dark:bg-gray-800 p-4 shadow-[0_2px_8px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-lg hover:ring-2 hover:ring-pacific-blue/50 transition-all">
+<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-text-primary dark:text-white text-base font-bold leading-tight">Morning Brew Cafe</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-normal leading-normal">CUST-00125</p>
+</div>
+<div class="flex gap-6 text-sm">
+<div>
+<p class="text-text-secondary dark:text-gray-400 text-xs">Total Orders</p>
+<p class="font-medium text-text-primary dark:text-white">8</p>
+</div>
+<div>
+<p class="text-text-secondary dark:text-gray-400 text-xs">Last Order</p>
+<p class="font-medium text-text-primary dark:text-white">01/10/2024</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col bg-neutral-white/80 dark:bg-gray-900/80 backdrop-blur-sm overflow-y-auto">
+<div class="p-8">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-xl" data-alt="The Cup Company logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-zZSoPcieyW0HXWSYpXRScseXPtlJYufoJScga9irDlw6lLdHpTox7Wekbk59XfXyubo03-csKKChEzUNWLUq_XwWe5orsQguI35wooVtCYoxXD6fhQYXhP5tLNUGieBHJ1-KIuQHLu_s9QeZCNduJKohDIQZUDXiG6c2M8snQqUbV8Uw7gLX7FEsEa-LIxdrqRlJrX-r9JcHQC6TussKOTc3KTV22ypPaCP2FnnSFlYvTzKYBkirSJJy2xqMJTrYYdGzwGrwcxo");'></div>
+<div>
+<h1 class="text-3xl font-bold text-primary dark:text-white">The Cup Company</h1>
+<p class="text-text-secondary dark:text-gray-400">Customer ID: CUST-00123</p>
+</div>
+</div>
+<div class="border-b border-gray-200 dark:border-gray-700">
+<nav aria-label="Tabs" class="-mb-px flex space-x-8">
+<a class="border-pacific-blue text-pacific-blue whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">Contact Info</a>
+<a class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:border-gray-500 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">Work Orders</a>
+<a class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:border-gray-500 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" href="#">Files</a>
+</nav>
+</div>
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-text-primary dark:text-white mb-4">Primary Contact</h3>
+<div class="space-y-3 text-text-secondary dark:text-gray-300">
+<p class="flex items-center gap-3"><span class="material-symbols-outlined text-xl text-pacific-blue">person</span> Jane Doe</p>
+<p class="flex items-center gap-3"><span class="material-symbols-outlined text-xl text-pacific-blue">email</span> jane.doe@thecupcompany.com</p>
+<p class="flex items-center gap-3"><span class="material-symbols-outlined text-xl text-pacific-blue">phone</span> (555) 123-4567</p>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-text-primary dark:text-white mb-4">Address</h3>
+<div class="space-y-1 text-text-secondary dark:text-gray-300">
+<p>123 Coffee Bean Lane</p>
+<p>Suite 450</p>
+<p>Seattle, WA 98101</p>
+</div>
+</div>
+</div>
+</div>
+<div class="px-8 py-6 bg-background-light/80 dark:bg-background-dark/50 mt-auto relative overflow-hidden backdrop-blur-sm">
+<h3 class="text-lg font-semibold text-text-primary dark:text-white mb-4">Recent Activity</h3>
+<p class="text-sm text-text-secondary dark:text-gray-400">Work order #WO-00789 updated to "In Production".</p>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

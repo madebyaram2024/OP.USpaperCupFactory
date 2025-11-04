@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Management - Pacific Paper Cups</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4FA9C6",
+                        "secondary": "#1F3A5F",
+                        "background-light": "#F4F7F9",
+                        "background-dark": "#141c1e",
+                        "text-light-primary": "#333333",
+                        "text-light-secondary": "#6c757d",
+                        "text-dark-primary": "#FFFFFF",
+                        "text-dark-secondary": "#a0aec0",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light-primary dark:text-dark-primary">
+<div class="flex h-screen w-full flex-col">
+<header class="flex h-16 shrink-0 items-center justify-between border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-secondary/[0.5] px-6 z-10 shadow-sm">
+<div class="flex items-center gap-4 text-secondary dark:text-white">
+<span class="material-symbols-outlined text-2xl">
+                waves
+            </span>
+<h2 class="text-lg font-bold tracking-tight">Pacific Paper Cups and More</h2>
+</div>
+<div class="flex flex-1 items-center justify-end gap-6">
+<label class="relative hidden lg:block w-full max-w-sm">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-xl">
+                    search
+                </span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-background-light dark:bg-background-dark focus:outline-none focus:ring-2 focus:ring-primary/50 h-10 placeholder:text-text-light-secondary dark:placeholder:text-text-dark-secondary pl-10 pr-4 text-sm font-normal" placeholder="Global search..." value=""/>
+</label>
+<div class="flex items-center gap-2">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary">
+<span class="material-symbols-outlined text-2xl">
+                        notifications
+                    </span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-text-light-secondary dark:text-text-dark-secondary hover:bg-primary/10 hover:text-primary">
+<span class="material-symbols-outlined text-2xl">dark_mode</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Admin user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKo9mLRyrfWd_6TzqXBK2QmjcwLOwUT_P-4SnjsAsznkDOsBTHaBq2B_mHdxQbzISghLRy50sOkNXkKOQ68JphTjjPUzg-RREDcSBnyBb5YRKFuC6fL3P509qyR8nPbFquBhRPOh84VhM3sK9drnmCsjg8iBgJw35q4ceLKm-Y8DRaaAeiLSmIcybfZyfv2keItbOwH2qrySqhT6-UaxHqgn_p8QFLnD_Oe8FYFkmzVnyqF07PeXD42M8kxgqbeR6-I9mRK0naZSw");'></div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] w-full">
+<aside class="flex w-64 shrink-0 flex-col justify-between bg-secondary p-4 text-white">
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">
+                            dashboard
+                        </span>
+<p class="text-sm font-medium">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">
+                            precision_manufacturing
+                        </span>
+<p class="text-sm font-medium">Production</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">
+                            folder_open
+                        </span>
+<p class="text-sm font-medium">Files</p>
+</a>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-3 py-2">
+<span class="material-symbols-outlined text-2xl text-primary">
+                            admin_panel_settings
+                        </span>
+<p class="text-sm font-bold text-primary">Admin</p>
+</div>
+<div class="flex flex-col gap-1 pl-5 border-l-2 border-primary/20">
+<a class="flex items-center gap-3 rounded-r-lg px-3 py-2 border-l-4 border-primary text-primary" href="#">
+<p class="text-sm font-bold">User Management</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-white/10 transition-colors" href="#">
+<p class="text-sm font-medium">Role and Permissions</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-white/10 transition-colors" href="#">
+<p class="text-sm font-medium">System Settings</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-white/10 transition-colors" href="#">
+<p class="text-sm font-medium">Audit Log</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-white/10 transition-colors" href="#">
+<p class="text-sm font-medium">Product Catalog</p>
+</a>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">
+                            settings
+                        </span>
+<p class="text-sm font-medium">Settings</p>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">
+                            logout
+                        </span>
+<p class="text-sm font-medium">Log Out</p>
+</a>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<div class="p-6 lg:p-8 space-y-6">
+<div class="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+<div class="flex flex-col gap-1">
+<p class="text-3xl font-bold tracking-tight text-text-light-primary dark:text-dark-primary">User Management</p>
+<p class="text-text-light-secondary dark:text-dark-secondary">Manage all users, their roles, and permissions within the application.</p>
+</div>
+<button class="flex h-10 cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-primary px-5 text-sm font-bold text-white shadow-sm transition-all hover:bg-primary/90 active:scale-95">
+<span class="material-symbols-outlined text-lg">
+                            add
+                        </span>
+<span class="truncate">Add New User</span>
+</button>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-secondary/[0.3] p-4 shadow-sm">
+<div class="px-2 py-1">
+<label class="flex flex-col w-full max-w-lg">
+<div class="relative flex w-full flex-1 items-stretch rounded-lg h-11">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-light-secondary dark:text-dark-secondary">
+                                    search
+                                </span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:outline-none focus:ring-2 focus:ring-primary/50 h-full placeholder:text-text-light-secondary dark:placeholder:text-dark-secondary pl-10 pr-4 text-base font-normal" placeholder="Search by name, email, or role..." value=""/>
+</div>
+</label>
+</div>
+<div class="overflow-x-auto">
+<div class="inline-block min-w-full align-middle">
+<div class="overflow-hidden rounded-lg">
+<table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+<thead class="bg-background-light dark:bg-background-dark/50">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-text-light-secondary dark:text-dark-secondary" scope="col">User</th>
+<th class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-text-light-secondary dark:text-dark-secondary" scope="col">Role</th>
+<th class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-text-light-secondary dark:text-dark-secondary" scope="col">Last Activity</th>
+<th class="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-text-light-secondary dark:text-dark-secondary" scope="col">Status</th>
+<th class="relative px-6 py-3" scope="col">
+<span class="sr-only">Actions</span>
+</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-secondary/[0.2]">
+<tr>
+<td class="whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar of Eleanor Vance" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDDUvgKZKc9LuJEz8brBIzPC-P2ZE4BRc2CdoBxPDXchckrOVYNT029i6QSeA2rE-gX9BBzUoZLbHaP8f8TALJWfvNTLlWZEjue_5V40BBeuDemJGGkcOmsMSi20zhodpwiCvne69fzvW-N5mFkzOdU82oBcy8F4HHl-vR4jNFMCWjeKcnTiD9szi3ZjU-9otuW0VtSPpQD9PLjtrMb-RCEGB1-dFzzdwlyEDotYI8zMuEQfNm2ORns1SmLlLbUeJzKuDTGSG47fM");'></div>
+<div>
+<div class="text-sm font-medium text-text-light-primary dark:text-dark-primary">Eleanor Vance</div>
+<div class="text-sm text-text-light-secondary dark:text-dark-secondary">eleanor@example.com</div>
+</div>
+</div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">Admin</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">2023-10-26 10:45 AM</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex rounded-full bg-green-100 dark:bg-green-900 px-2 text-xs font-semibold leading-5 text-green-800 dark:text-green-200">Active</span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+<button class="text-text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar of Marcus Holloway" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC461qpqSxWY2bRlxrBfRja1GBK4OQ7j4vkPNpXTSzjG8p3kHI6nyXjf6ofPVYJ-vED0xzTFl6g0HALyaobMfqAE_3VDuTRFxqpDAZudP9ZCbKo8QCxVRA8ePViQWnc9ctxcQU3CAPcwm40mXAShwmTfr0Fvlobi6hqOOar_bF0Rzn7kbTF5coAQxw-DPh3HlCq2IuEOCcLOIEBZ8sbD9qiH3m5MSOrNxM9AG66TMOkps2iN2A4im163xIiPYZcN8vRrmbVOC00zlg");'></div>
+<div>
+<div class="text-sm font-medium text-text-light-primary dark:text-dark-primary">Marcus Holloway</div>
+<div class="text-sm text-text-light-secondary dark:text-dark-secondary">marcus@example.com</div>
+</div>
+</div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">Production Manager</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">2023-10-26 09:12 AM</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex rounded-full bg-green-100 dark:bg-green-900 px-2 text-xs font-semibold leading-5 text-green-800 dark:text-green-200">Active</span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+<button class="text-text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar of Clara Oswald" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACEI9ZgbsXQ88ZT8FVWwmgq8-eIGhIcRNRGX6CI74qFNr76Ay8PMAk76e6GpVcegHNSdZRwrNMN6UuNxQNORnNUBwt9n32uzvLHLmVE5pEtrHXsykVUq3e-DE_qS15DxQQj7iE3eLRHQb1FnpEjyckFk4qSJr_WnvR3qzyHEJqnRtNluXpqYKDr3RWgwXvPJ4AYdRdaUVjWBW5gQZqXNk5Rw3svWir8Z4fnCu5S-dH0MkdbxQVjqRFMjOv7sDajP36mANFg8adbEo");'></div>
+<div>
+<div class="text-sm font-medium text-text-light-primary dark:text-dark-primary">Clara Oswald</div>
+<div class="text-sm text-text-light-secondary dark:text-dark-secondary">clara@example.com</div>
+</div>
+</div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">Operator</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">2023-10-25 03:20 PM</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex rounded-full bg-green-100 dark:bg-green-900 px-2 text-xs font-semibold leading-5 text-green-800 dark:text-green-200">Active</span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+<button class="text-text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar of John Smith" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC25PqCAoZBoJ90BNSZnFNVF2B9p1w7KGwZgGYkZtKZnu9EYjYyAYBFyPH8lJOT6D96xDbRbJYUiYluIs1_9dyn4jb9Cu60U0QzBcOXyO8WrhPk2Veiu1YCKGkn_nNwpwhDvCZrnVvxrBD4IUJJm8IeaSOY6A3EovlOhTH6FJp6JE6kx6MxZJEEel2vRd-7BE6Dh5K-bqfDXv_HMr2_ZVBqgZV0SS1wIkUIiPu8WtW5ayG3u26plV3c0tDM6Ucvi0bAcBKEky8QxI4");'></div>
+<div>
+<div class="text-sm font-medium text-text-light-primary dark:text-dark-primary">John Smith</div>
+<div class="text-sm text-text-light-secondary dark:text-dark-secondary">john.smith@example.com</div>
+</div>
+</div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">Operator</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">Never</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex rounded-full bg-yellow-100 dark:bg-yellow-900 px-2 text-xs font-semibold leading-5 text-yellow-800 dark:text-yellow-200">Invited</span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+<button class="text-text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar of Jane Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCj_7e1gFu4qSHbHNF3ZvNharczE_8xd9xRHlVvqMnGBR0xFcJBsnpNK8vhe-a8KROPo8lP52su2syU_O70WHTrGh5uqMVyOl_FCbEK681T36b7STVJk9QVI3x0g4fdzcCu-jidOT2U4vlgTGNzFs4pC15znPAYFPO3vNMz1428OfoI3HxnLdEE0Vko9aoVACjm7u6N_6cbkzYK7YROEyktbukM9YqnFSelFxTsMIlRjUKcXRAefHcOxwzImyWJrZJaljJhyj0Wy5A");'></div>
+<div>
+<div class="text-sm font-medium text-text-light-primary dark:text-dark-primary">Jane Doe</div>
+<div class="text-sm text-text-light-secondary dark:text-dark-secondary">jane.d@example.com</div>
+</div>
+</div>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">Production Manager</td>
+<td class="whitespace-nowrap px-6 py-4 text-sm text-text-light-secondary dark:text-dark-secondary">2023-09-15 11:00 AM</td>
+<td class="whitespace-nowrap px-6 py-4">
+<span class="inline-flex rounded-full bg-red-100 dark:bg-red-900 px-2 text-xs font-semibold leading-5 text-red-800 dark:text-red-200">Inactive</span>
+</td>
+<td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+<button class="text-text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

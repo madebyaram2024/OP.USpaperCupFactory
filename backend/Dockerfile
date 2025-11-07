@@ -29,4 +29,4 @@ COPY . .
 EXPOSE 8000
 
 # Run the application
-CMD ["python", "run_server.py"]
+CMD ["sh", "-c", "python init_db.py && python run_server.py"]

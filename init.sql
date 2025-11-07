@@ -1,0 +1,3 @@
+-- This script runs during PostgreSQL initialization if needed
+-- Currently empty as the application will handle database initialization
+-- You can add any initial database setup here if needed

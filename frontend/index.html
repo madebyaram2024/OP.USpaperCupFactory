@@ -58,12 +58,12 @@
     <div class="relative flex h-screen w-full group/design-root overflow-hidden">
         <aside class="w-64 bg-primary text-white flex flex-col flex-shrink-0 z-20">
             <div class="flex h-16 items-center gap-3 px-6 border-b border-white/10">
-                <div class="size-8">
+                <div class="size-8 cursor-pointer" onclick="loadScreen('dashboard')">
                     <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                         <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
                     </svg>
                 </div>
-                <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Pacific Paper</h2>
+                <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] cursor-pointer" onclick="loadScreen('dashboard')">Pacific Paper</h2>
             </div>
             <nav class="flex-1 px-4 py-6 space-y-2">
                 <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#" onclick="loadScreen('dashboard')">
@@ -95,6 +95,23 @@
                     <span class="material-symbols-outlined text-xl">bar_chart</span>
                     <span class="text-sm font-medium">Reports</span>
                 </a>
+                <div class="pt-4 mt-4 border-t border-white/10">
+                    <div class="flex items-center gap-3 px-4 py-2.5">
+                        <span class="material-symbols-outlined text-xl text-pacific-blue">admin_panel_settings</span>
+                        <span class="text-sm font-bold text-pacific-blue">Admin</span>
+                    </div>
+                    <div class="pl-5 space-y-1">
+                        <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#" onclick="loadScreen('admin')">
+                            <span class="text-sm font-medium">Admin Dashboard</span>
+                        </a>
+                        <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#" onclick="loadScreen('user-management')">
+                            <span class="text-sm font-medium">User Management</span>
+                        </a>
+                        <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#" onclick="loadScreen('role-permissions')">
+                            <span class="text-sm font-medium">Role & Permissions</span>
+                        </a>
+                    </div>
+                </div>
             </nav>
             <div class="mt-auto p-4 border-t border-white/10">
                 <a class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-white/80 hover:bg-white/10 hover:text-white transition-colors" href="#" onclick="loadScreen('settings')">
@@ -129,13 +146,13 @@
                                     <p class="text-sm font-semibold text-text-primary dark:text-white">Alex Chen</p>
                                     <p class="text-xs text-text-secondary dark:text-gray-400">alex.chen@pacific.com</p>
                                 </div>
-                                <a class="flex items-center gap-3 px-3 py-2.5 text-sm text-text-secondary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" href="#" onclick="event.stopPropagation();">
+                                <a class="flex items-center gap-3 px-3 py-2.5 text-sm text-text-secondary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" href="#" onclick="event.stopPropagation(); loadScreen('account-settings');">
                                     <span class="material-symbols-outlined text-xl">account_circle</span>
                                     <span>My Profile</span>
                                 </a>
-                                <a class="flex items-center gap-3 px-3 py-2.5 text-sm text-text-secondary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" href="#" onclick="event.stopPropagation();">
+                                <a class="flex items-center gap-3 px-3 py-2.5 text-sm text-text-secondary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" href="#" onclick="event.stopPropagation(); loadScreen('account-settings');">
                                     <span class="material-symbols-outlined text-xl">settings</span>
-                                    <span>Settings</span>
+                                    <span>Account Settings</span>
                                 </a>
                                 <a class="flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 border-t border-gray-200 dark:border-gray-700 mt-1" href="#" onclick="event.stopPropagation(); handleLogout(event);">
                                     <span class="material-symbols-outlined text-xl">logout</span>
@@ -455,6 +472,18 @@
                     break;
                 case 'settings':
                     loadSettings();
+                    break;
+                case 'account-settings':
+                    loadAccountSettings();
+                    break;
+                case 'admin':
+                    loadAdminDashboard();
+                    break;
+                case 'user-management':
+                    loadUserManagement();
+                    break;
+                case 'role-permissions':
+                    loadRolePermissions();
                     break;
                 case 'communication':
                     loadCommunication();
@@ -1974,6 +2003,537 @@
                 .replace(/'/g, "&#039;");
         }
         
+        // Load account settings screen
+        function loadAccountSettings() {
+            mainContent.innerHTML = `
+                <div class="w-full p-8">
+                    <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">Account Settings</h2>
+                    <div class="bg-neutral-white dark:bg-gray-800 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                        <div class="space-y-6">
+                            <!-- Profile Information Section -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary dark:text-white mb-4">Profile Information</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary dark:text-white mb-1">Full Name</label>
+                                        <input type="text" id="fullName" value="Alex Chen" class="form-input w-full rounded-lg bg-background-light dark:bg-gray-700 text-text-primary dark:text-white placeholder:text-text-secondary dark:placeholder:text-gray-400 border-gray-200 dark:border-gray-600 px-3 py-2 text-sm focus:ring-2 focus:ring-pacific-blue focus:border-pacific-blue">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary dark:text-white mb-1">Email Address</label>
+                                        <input type="email" id="emailAddress" value="alex.chen@pacific.com" class="form-input w-full rounded-lg bg-background-light dark:bg-gray-700 text-text-primary dark:text-white placeholder:text-text-secondary dark:placeholder:text-gray-400 border-gray-200 dark:border-gray-600 px-3 py-2 text-sm focus:ring-2 focus:ring-pacific-blue focus:border-pacific-blue">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary dark:text-white mb-1">Phone Number</label>
+                                        <input type="tel" id="phoneNumber" value="+1 (555) 123-4567" class="form-input w-full rounded-lg bg-background-light dark:bg-gray-700 text-text-primary dark:text-white placeholder:text-text-secondary dark:placeholder:text-gray-400 border-gray-200 dark:border-gray-600 px-3 py-2 text-sm focus:ring-2 focus:ring-pacific-blue focus:border-pacific-blue">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary dark:text-white mb-1">Role</label>
+                                        <input type="text" value="Production Manager" disabled class="form-input w-full rounded-lg bg-gray-100 dark:bg-gray-700 text-text-secondary dark:text-gray-400 border-gray-200 dark:border-gray-600 px-3 py-2 text-sm cursor-not-allowed">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Password Management Section -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary dark:text-white mb-4">Change Password</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-text-primary dark:text-white mb-1">Current Password</label>
+                                        <input type="password" placeholder="Enter current password" class="form-input w-full rounded-lg bg-background-light dark:bg-gray-700 text-text-primary dark:text-white placeholder:text-text-secondary dark:placeholder:text-gray-400 border-gray-200 dark:border-gray-600 px-3 py-2 text-sm focus:ring-2 focus:ring-pacific-blue focus:border-pacific-blue">
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-medium text-text-primary dark:text-white mb-1">New Password</label>
+                                            <input type="password" placeholder="Enter new password" class="form-input w-full rounded-lg bg-background-light dark:bg-gray-700 text-text-primary dark:text-white placeholder:text-text-secondary dark:placeholder:text-gray-400 border-gray-200 dark:border-gray-600 px-3 py-2 text-sm focus:ring-2 focus:ring-pacific-blue focus:border-pacific-blue">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-text-primary dark:text-white mb-1">Confirm New Password</label>
+                                            <input type="password" placeholder="Confirm new password" class="form-input w-full rounded-lg bg-background-light dark:bg-gray-700 text-text-primary dark:text-white placeholder:text-text-secondary dark:placeholder:text-gray-400 border-gray-200 dark:border-gray-600 px-3 py-2 text-sm focus:ring-2 focus:ring-pacific-blue focus:border-pacific-blue">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notification Preferences Section -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-text-primary dark:text-white mb-4">Notification Preferences</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-text-primary dark:text-white">New Production Order Alerts</p>
+                                            <p class="text-sm text-text-secondary dark:text-gray-400">Receive notifications for new production orders</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-text-primary dark:text-white">System Maintenance Updates</p>
+                                            <p class="text-sm text-text-secondary dark:text-gray-400">Receive notifications about system maintenance</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="font-medium text-text-primary dark:text-white">Weekly Summary Report</p>
+                                            <p class="text-sm text-text-secondary dark:text-gray-400">Receive weekly summary reports via email</p>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer">
+                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex justify-end items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                                <button class="px-6 py-2.5 rounded-lg text-text-primary dark:text-gray-200 font-medium bg-neutral-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">Cancel</button>
+                                <button class="px-6 py-2.5 rounded-lg text-white font-medium bg-primary hover:bg-primary/90 transition-colors">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load admin dashboard screen
+        function loadAdminDashboard() {
+            mainContent.innerHTML = `
+                <div class="w-full p-8">
+                    <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">Admin Dashboard</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-neutral-white dark:bg-gray-800 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-lg transition-shadow" onclick="loadScreen('user-management')">
+                            <div class="flex items-center gap-4">
+                                <div class="size-12 rounded-lg bg-pacific-blue/10 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-pacific-blue text-xl">group</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-text-primary dark:text-white">User Management</h3>
+                                    <p class="text-text-secondary dark:text-gray-300 text-sm">Manage users and permissions</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-neutral-white dark:bg-gray-800 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-lg transition-shadow" onclick="loadScreen('role-permissions')">
+                            <div class="flex items-center gap-4">
+                                <div class="size-12 rounded-lg bg-green-500/10 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-green-500 text-xl">admin_panel_settings</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-text-primary dark:text-white">Roles & Permissions</h3>
+                                    <p class="text-text-secondary dark:text-gray-300 text-sm">Configure system roles</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-neutral-white dark:bg-gray-800 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-lg transition-shadow">
+                            <div class="flex items-center gap-4">
+                                <div class="size-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-blue-500 text-xl">analytics</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-text-primary dark:text-white">System Analytics</h3>
+                                    <p class="text-text-secondary dark:text-gray-300 text-sm">Monitor system performance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-neutral-white dark:bg-gray-800 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                            <h3 class="text-lg font-semibold text-text-primary dark:text-white mb-4">Recent Activity</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="size-2 rounded-full bg-green-500 mt-2 flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <p class="font-medium text-text-primary dark:text-white">New user "John Smith" created</p>
+                                        <p class="text-text-secondary dark:text-gray-300 text-sm">2 minutes ago</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="size-2 rounded-full bg-blue-500 mt-2 flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <p class="font-medium text-text-primary dark:text-white">Role "Production Manager" updated</p>
+                                        <p class="text-text-secondary dark:text-gray-300 text-sm">1 hour ago</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="size-2 rounded-full bg-yellow-500 mt-2 flex-shrink-0"></div>
+                                    <div class="flex-1">
+                                        <p class="font-medium text-text-primary dark:text-white">System backup completed</p>
+                                        <p class="text-text-secondary dark:text-gray-300 text-sm">3 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-neutral-white dark:bg-gray-800 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                            <h3 class="text-lg font-semibold text-text-primary dark:text-white mb-4">System Status</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between">
+                                    <span class="text-text-primary dark:text-white">Server Uptime</span>
+                                    <span class="font-medium text-green-500">99.9%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 99.9%"></div>
+                                </div>
+
+                                <div class="flex justify-between mt-4">
+                                    <span class="text-text-primary dark:text-white">Database Status</span>
+                                    <span class="font-medium text-green-500">Operational</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+
+                                <div class="flex justify-between mt-4">
+                                    <span class="text-text-primary dark:text-white">Active Users</span>
+                                    <span class="font-medium text-text-primary dark:text-white">24</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="bg-pacific-blue h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load user management screen
+        function loadUserManagement() {
+            mainContent.innerHTML = `
+                <div class="w-full p-8">
+                    <div class="flex flex-wrap justify-between gap-4 items-center mb-6">
+                        <h2 class="text-2xl font-bold text-primary dark:text-white">User Management</h2>
+                        <button id="addNewUserBtn" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-pacific-blue text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-pacific-blue/90 transition-colors">
+                            <span class="truncate">Add New User</span>
+                        </button>
+                    </div>
+                    <div class="bg-neutral-white dark:bg-gray-800 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                        <div class="relative w-full max-w-md mb-6">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary/80 dark:text-gray-400 text-xl">search</span>
+                            <input id="userSearch" class="form-input h-10 w-full rounded-lg bg-background-light dark:bg-background-dark text-text-primary dark:text-white placeholder:text-text-secondary dark:placeholder:text-gray-400 border-gray-200 dark:border-gray-700 pl-10 pr-4 text-sm focus:ring-2 focus:ring-pacific-blue focus:border-pacific-blue" placeholder="Search users by name, email, or role..." type="search"/>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="border-b border-gray-200 dark:border-gray-700 text-left">
+                                        <th class="pb-3 text-text-secondary dark:text-gray-300 font-medium">User</th>
+                                        <th class="pb-3 text-text-secondary dark:text-gray-300 font-medium">Role</th>
+                                        <th class="pb-3 text-text-secondary dark:text-gray-300 font-medium">Status</th>
+                                        <th class="pb-3 text-text-secondary dark:text-gray-300 font-medium">Last Activity</th>
+                                        <th class="pb-3 text-text-secondary dark:text-gray-300 font-medium">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                    <tr>
+                                        <td class="py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="size-10 rounded-full bg-pacific-blue/10 flex items-center justify-center">
+                                                    <span class="text-pacific-blue font-semibold">EV</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-text-primary dark:text-white">Eleanor Vance</p>
+                                                    <p class="text-text-secondary dark:text-gray-300 text-sm">eleanor@example.com</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4">
+                                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300">
+                                                <span class="size-1.5 rounded-full bg-red-500"></span>
+                                                Admin
+                                            </span>
+                                        </td>
+                                        <td class="py-4">
+                                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">
+                                                <span class="size-1.5 rounded-full bg-green-500"></span>
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="py-4 text-text-secondary dark:text-gray-300">2024-11-06 10:45 AM</td>
+                                        <td class="py-4">
+                                            <button class="text-pacific-blue hover:text-pacific-blue/80 text-sm font-medium mr-3">Edit</button>
+                                            <button class="text-red-500 hover:text-red-600 text-sm font-medium">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="size-10 rounded-full bg-green-500/10 flex items-center justify-center">
+                                                    <span class="text-green-500 font-semibold">MH</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-text-primary dark:text-white">Marcus Holloway</p>
+                                                    <p class="text-text-secondary dark:text-gray-300 text-sm">marcus@example.com</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4">
+                                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300">
+                                                <span class="size-1.5 rounded-full bg-blue-500"></span>
+                                                Production Manager
+                                            </span>
+                                        </td>
+                                        <td class="py-4">
+                                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">
+                                                <span class="size-1.5 rounded-full bg-green-500"></span>
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="py-4 text-text-secondary dark:text-gray-300">2024-11-06 09:12 AM</td>
+                                        <td class="py-4">
+                                            <button class="text-pacific-blue hover:text-pacific-blue/80 text-sm font-medium mr-3">Edit</button>
+                                            <button class="text-gray-500 hover:text-gray-600 text-sm font-medium">Disable</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="size-10 rounded-full bg-yellow-500/10 flex items-center justify-center">
+                                                    <span class="text-yellow-500 font-semibold">CO</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-text-primary dark:text-white">Clara Oswald</p>
+                                                    <p class="text-text-secondary dark:text-gray-300 text-sm">clara@example.com</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4">
+                                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300">
+                                                <span class="size-1.5 rounded-full bg-purple-500"></span>
+                                                Operator
+                                            </span>
+                                        </td>
+                                        <td class="py-4">
+                                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">
+                                                <span class="size-1.5 rounded-full bg-green-500"></span>
+                                                Active
+                                            </span>
+                                        </td>
+                                        <td class="py-4 text-text-secondary dark:text-gray-300">2024-11-05 03:20 PM</td>
+                                        <td class="py-4">
+                                            <button class="text-pacific-blue hover:text-pacific-blue/80 text-sm font-medium mr-3">Edit</button>
+                                            <button class="text-gray-500 hover:text-gray-600 text-sm font-medium">Disable</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="size-10 rounded-full bg-indigo-500/10 flex items-center justify-center">
+                                                    <span class="text-indigo-500 font-semibold">JS</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-text-primary dark:text-white">John Smith</p>
+                                                    <p class="text-text-secondary dark:text-gray-300 text-sm">john.smith@example.com</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4">
+                                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300">
+                                                <span class="size-1.5 rounded-full bg-purple-500"></span>
+                                                Operator
+                                            </span>
+                                        </td>
+                                        <td class="py-4">
+                                            <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">
+                                                <span class="size-1.5 rounded-full bg-yellow-500"></span>
+                                                Invited
+                                            </span>
+                                        </td>
+                                        <td class="py-4 text-text-secondary dark:text-gray-300">Never</td>
+                                        <td class="py-4">
+                                            <button class="text-pacific-blue hover:text-pacific-blue/80 text-sm font-medium mr-3">Edit</button>
+                                            <button class="text-red-500 hover:text-red-600 text-sm font-medium">Revoke</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-6 flex justify-center">
+                            <div class="flex items-center gap-2">
+                                <span class="flex items-center justify-center size-8 rounded-lg border border-gray-200 dark:border-gray-700 text-text-secondary dark:text-gray-400">←</span>
+                                <span class="flex items-center justify-center size-8 rounded-lg bg-pacific-blue text-white font-semibold">1</span>
+                                <button class="flex items-center justify-center size-8 rounded-lg border border-gray-200 dark:border-gray-700 text-text-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">2</button>
+                                <button class="flex items-center justify-center size-8 rounded-lg border border-gray-200 dark:border-gray-700 text-text-primary dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">3</button>
+                                <span class="flex items-center justify-center size-8 rounded-lg border border-gray-200 dark:border-gray-700 text-text-secondary dark:text-gray-400">→</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load role and permissions management screen
+        function loadRolePermissions() {
+            mainContent.innerHTML = `
+                <div class="w-full p-8">
+                    <h2 class="text-2xl font-bold text-primary dark:text-white mb-6">Roles & Permissions</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div class="lg:col-span-2">
+                            <div class="bg-neutral-white dark:bg-gray-800 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                                <div class="flex justify-between items-center mb-6">
+                                    <h3 class="text-lg font-semibold text-text-primary dark:text-white">Available Roles</h3>
+                                    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-pacific-blue text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-pacific-blue/90 transition-colors">
+                                        <span class="truncate">Create New Role</span>
+                                    </button>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-background-light dark:bg-background-dark">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h4 class="font-medium text-text-primary dark:text-white">Admin</h4>
+                                                <p class="text-text-secondary dark:text-gray-300 text-sm mt-1">Full system access with all permissions</p>
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <button class="text-pacific-blue hover:text-pacific-blue/80 text-sm font-medium">Edit</button>
+                                                <button class="text-red-500 hover:text-red-600 text-sm font-medium">Delete</button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full text-xs font-medium bg-pacific-blue/10 text-pacific-blue">All permissions</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-background-light dark:bg-background-dark">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h4 class="font-medium text-text-primary dark:text-white">Production Manager</h4>
+                                                <p class="text-text-secondary dark:text-gray-300 text-sm mt-1">Manage production, work orders, and inventory</p>
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <button class="text-pacific-blue hover:text-pacific-blue/80 text-sm font-medium">Edit</button>
+                                                <button class="text-red-500 hover:text-red-600 text-sm font-medium">Delete</button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full text-xs font-medium bg-green-500/10 text-green-500">Manage Production</span>
+                                            <span class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full text-xs font-medium bg-green-500/10 text-green-500">Manage Work Orders</span>
+                                            <span class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full text-xs font-medium bg-green-500/10 text-green-500">View Reports</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-background-light dark:bg-background-dark">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h4 class="font-medium text-text-primary dark:text-white">Operator</h4>
+                                                <p class="text-text-secondary dark:text-gray-300 text-sm mt-1">Limited access for production operations</p>
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <button class="text-pacific-blue hover:text-pacific-blue/80 text-sm font-medium">Edit</button>
+                                                <button class="text-red-500 hover:text-red-600 text-sm font-medium">Delete</button>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-500">View Work Orders</span>
+                                            <span class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full text-xs font-medium bg-yellow-500/10 text-yellow-500">Update Production Status</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bg-neutral-white dark:bg-gray-800 rounded-xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+                                <h3 class="text-lg font-semibold text-text-primary dark:text-white mb-4">Role Permissions</h3>
+                                <p class="text-text-secondary dark:text-gray-300 text-sm mb-4">Select a role to view and edit its permissions</p>
+                                
+                                <div class="space-y-3">
+                                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                        <h4 class="font-medium text-text-primary dark:text-white mb-3">Basic Permissions</h4>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-text-secondary dark:text-gray-300 text-sm">View Dashboard</label>
+                                                <label class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer" checked>
+                                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                                </label>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-text-secondary dark:text-gray-300 text-sm">View Reports</label>
+                                                <label class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer" checked>
+                                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                                </label>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-text-secondary dark:text-gray-300 text-sm">Edit Profile</label>
+                                                <label class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer" checked>
+                                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                        <h4 class="font-medium text-text-primary dark:text-white mb-3">Production Permissions</h4>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-text-secondary dark:text-gray-300 text-sm">Manage Work Orders</label>
+                                                <label class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer" checked>
+                                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                                </label>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-text-secondary dark:text-gray-300 text-sm">Update Production Status</label>
+                                                <label class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer" checked>
+                                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                                </label>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-text-secondary dark:text-gray-300 text-sm">Manage Inventory</label>
+                                                <label class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer">
+                                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                        <h4 class="font-medium text-text-primary dark:text-white mb-3">Admin Permissions</h4>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-text-secondary dark:text-gray-300 text-sm">Manage Users</label>
+                                                <label class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer">
+                                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                                </label>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-text-secondary dark:text-gray-300 text-sm">Manage Roles</label>
+                                                <label class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer">
+                                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                                </label>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-text-secondary dark:text-gray-300 text-sm">System Configuration</label>
+                                                <label class="relative inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer">
+                                                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-pacific-blue"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6">
+                                    <button class="w-full flex items-center justify-center rounded-lg h-10 bg-pacific-blue text-white text-sm font-bold hover:bg-pacific-blue/90 transition-colors">
+                                        Save Role Permissions
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         // Initialize with dashboard
         loadDashboard();
     </script>

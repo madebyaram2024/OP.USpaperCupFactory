@@ -151,6 +151,38 @@ USPC_Factory_Speckit/
 3. Use conventional commits for all changes
 4. Update documentation as needed
 
+## Deployment
+
+### Docker Deployment
+
+The application can be deployed using Docker and Docker Compose. The project includes:
+
+- `Dockerfile` for the backend (Python/FastAPI)
+- `Dockerfile` for the frontend (Nginx)
+- `docker-compose.yml` for local development
+- `docker-compose.prod.yml` for production deployment
+
+#### Local Development
+To run the application locally with Docker:
+
+```bash
+docker-compose up --build
+```
+
+The frontend will be available at `http://localhost:80` and the backend API at `http://localhost:8000`.
+
+#### Production Deployment
+
+For production deployment on Coolify:
+
+1. Ensure your repository includes the Docker files and docker-compose configuration
+2. Use `docker-compose.prod.yml` as your deployment configuration
+3. Set the required environment variables in your Coolify deployment settings
+
+### Coolify Deployment
+
+Detailed Coolify deployment instructions are available in `COOLIFY_DEPLOYMENT.md`.
+
 ## License
 
 [License information would go here]

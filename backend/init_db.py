@@ -8,8 +8,8 @@ import os
 sys.path.insert(0, os.path.abspath('.'))
 
 # Import models first to register them with declarative base
-from src.models.customer import Customer
-from src.database import engine, Base
+from src.models.customer import Customer, Base
+from src.database import engine
 
 
 def init_db():

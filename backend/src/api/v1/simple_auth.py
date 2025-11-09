@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, status, Request, Response
+from fastapi import APIRouter, HTTPException, status, Request, Response, Depends
 from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
@@ -118,10 +118,10 @@ def login_page():
 
 
 @router.post("/login")
-def login_user(request: Request, db: Session = Depends(get_db)):
+async def login_user(request: Request, db: Session = Depends(get_db)):
     """Simple login endpoint."""
     try:
-        data = request.json()
+        data = await request.json()
         username = data.get("username")
         password = data.get("password")
 

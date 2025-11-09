@@ -61,7 +61,7 @@ class WorkOrderFile(Base):
 
 
 class WorkOrderUpdate(Base):
-    __tablename__ = "work_order_updates"
+    __tablename__ = "simple_work_order_updates"
 
     id = Column(Integer, primary_key=True, index=True)
     work_order_id = Column(Integer, ForeignKey("simple_work_orders.id"), nullable=False)

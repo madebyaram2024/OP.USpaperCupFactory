@@ -3,9 +3,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
-# Import models to ensure they are registered with SQLAlchemy
-from .models.simple_work_order import SimpleWorkOrder, WorkOrderFile, WorkOrderUpdate
-
 # Use environment variable for database URL, with a default for development
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://user:password@localhost:5432/customer_management")
 

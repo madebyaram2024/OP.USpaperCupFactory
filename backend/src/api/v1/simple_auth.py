@@ -120,31 +120,71 @@ def login_page():
 @router.post("/login")
 async def login_user(request: Request, db: Session = Depends(get_db)):
     """Simple login endpoint."""
+    import logging
+    logger = logging.getLogger(__name__)
+
     try:
         data = await request.json()
         username = data.get("username")
         password = data.get("password")
 
+        logger.info(f"Login attempt for username: {username}")
+
         # Find user
-        user = db.query(SimpleUser).filter(SimpleUser.username == username).first()
+        try:
+            user = db.query(SimpleUser).filter(SimpleUser.username == username).first()
+            logger.info(f"User query completed, found: {user is not None}")
+        except Exception as e:
+            logger.error(f"Database query error: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            return {"success": False, "error": f"Database error: {str(e)}"}
+
         if not user:
+            logger.warning(f"User not found: {username}")
             return {"success": False, "error": "Invalid username or password"}
 
         # Verify password
-        if not verify_password(password, user.hashed_password):
+        try:
+            logger.info(f"Verifying password for user: {username}")
+            password_valid = verify_password(password, user.hashed_password)
+            logger.info(f"Password verification result: {password_valid}")
+        except Exception as e:
+            logger.error(f"Password verification error: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            return {"success": False, "error": f"Password verification failed: {str(e)}"}
+
+        if not password_valid:
+            logger.warning(f"Invalid password for user: {username}")
             return {"success": False, "error": "Invalid username or password"}
 
         # Check if user is active
         if not user.is_active:
+            logger.warning(f"Inactive user attempted login: {username}")
             return {"success": False, "error": "Account is disabled"}
 
         # Update last login
-        user.last_login = datetime.utcnow()
-        db.commit()
+        try:
+            user.last_login = datetime.utcnow()
+            db.commit()
+            logger.info(f"Updated last login for user: {username}")
+        except Exception as e:
+            logger.error(f"Error updating last login: {str(e)}")
+            # Don't fail login just because of this
+            pass
 
         # Create token
-        token = create_simple_token(user.username)
+        try:
+            token = create_simple_token(user.username)
+            logger.info(f"Token created for user: {username}")
+        except Exception as e:
+            logger.error(f"Token creation error: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            return {"success": False, "error": f"Token creation failed: {str(e)}"}
 
+        logger.info(f"Login successful for user: {username}")
         return {
             "success": True,
             "token": token,
@@ -158,6 +198,9 @@ async def login_user(request: Request, db: Session = Depends(get_db)):
         }
 
     except Exception as e:
+        logger.error(f"Unexpected error in login: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return {"success": False, "error": f"Login failed: {str(e)}"}
 
 

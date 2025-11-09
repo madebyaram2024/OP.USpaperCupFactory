@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/aramoganyan/**)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(docker-compose:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

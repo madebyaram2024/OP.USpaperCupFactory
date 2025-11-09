@@ -1,7 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional, List
 from datetime import datetime
-import uuid
 
 # Shared properties
 class CustomerBase(BaseModel):
@@ -43,14 +42,12 @@ class CustomerUpdate(BaseModel):
 
 # Properties shared by models stored in DB
 class CustomerInDBBase(CustomerBase):
-    id: uuid.UUID
+    id: int
     status: str = "active"
-    active_orders_count: int = 0
     total_orders_count: int = 0
     created_at: datetime
     updated_at: datetime
-    created_by: Optional[uuid.UUID] = None
-    updated_by: Optional[uuid.UUID] = None
+    is_archived: bool = False
 
     class Config:
         from_attributes = True

@@ -42,7 +42,7 @@ def init_db():
         else:
             logger.info("All expected tables exist")
 
-        # Check if we can create a session
+        # Check if we can create a session and create admin user if needed
         db = SessionLocal()
         try:
             # Try to count existing users and work orders
@@ -50,6 +50,30 @@ def init_db():
             if 'simple_users' in tables:
                 user_count = db.query(func.count(SimpleUser.id)).scalar()
                 logger.info(f"Database connection successful. Current user count: {user_count}")
+
+                # Create admin user if no users exist
+                if user_count == 0:
+                    logger.info("No users found. Creating admin user...")
+                    from src.security import get_password_hash
+                    from datetime import datetime
+
+                    admin_user = SimpleUser(
+                        username="admin",
+                        email="admin@uspcfactory.com",
+                        full_name="System Administrator",
+                        hashed_password=get_password_hash("admin123"),
+                        role="admin",
+                        is_admin=True,
+                        is_active=True,
+                        created_at=datetime.utcnow()
+                    )
+                    db.add(admin_user)
+                    db.commit()
+                    logger.info("✅ Admin user created successfully!")
+                    logger.info("   Username: admin")
+                    logger.info("   Password: admin123")
+                else:
+                    logger.info("Users already exist, skipping admin creation")
 
             if 'simple_work_orders' in tables:
                 order_count = db.query(func.count(SimpleWorkOrder.id)).scalar()

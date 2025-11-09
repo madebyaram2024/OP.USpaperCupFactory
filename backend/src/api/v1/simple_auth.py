@@ -2,11 +2,11 @@ from fastapi import APIRouter, HTTPException, status, Request, Response, Depends
 from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
+from jose import jwt
 
 from ...models.simple_user import SimpleUser
 from ...security import verify_password, create_access_token, verify_token, get_password_hash
 from ...database import get_db
-import jwt
 
 router = APIRouter()
 

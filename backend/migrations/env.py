@@ -9,9 +9,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 # Import models
-from models.customer import Customer
-from models.user import User
-from models.work_order import WorkOrder, WorkOrderUpdate, ProductionSchedule
+from models.simple_work_order import SimpleWorkOrder, WorkOrderFile, WorkOrderUpdate
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

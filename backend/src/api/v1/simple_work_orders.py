@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Request
+from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Request, Depends
 from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
 from typing import List, Optional
@@ -26,7 +26,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
         # Redirect to login page
         return RedirectResponse(url="/api/v1/simple-auth/login")
 
-    return f"""
+    return """
     <!DOCTYPE html>
     <html>
     <head>
@@ -68,7 +68,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
         <div class="header">
             <h1>🏭 USPC Factory - Work Orders</h1>
             <div class="user-info">
-                <strong>{user.full_name}</strong> ({user.role})
+                <strong>{user_full_name}</strong> ({user_role})
                 <a href="/api/v1/simple-auth/logout" class="btn btn-danger" style="background: #dc3545;">Logout</a>
             </div>
         </div>
@@ -92,10 +92,10 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
                     } else {
                         data.new_orders.forEach(order => {
                             html += `<div class="order-card">
-                                <h4>${order.customer_name} - ${order.quantity} units</h4>
-                                <p>${order.order_description}</p>
-                                <button class="btn" onclick="startDesign(${order.id})">🎨 Start Design</button>
-                                <button class="btn" onclick="viewDetails(${order.id})">📋 Details</button>
+                                <h4>${{order.customer_name} - ${{order.quantity} units</h4>
+                                <p>${{order.order_description}</p>
+                                <button class="btn" onclick="startDesign(${{order.id})">🎨 Start Design</button>
+                                <button class="btn" onclick="viewDetails(${{order.id})">📋 Details</button>
                             </div>`;
                         });
                     }
@@ -109,10 +109,10 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
                     } else {
                         data.design.forEach(order => {
                             html += `<div class="order-card design">
-                                <h4>${order.customer_name} - ${order.quantity} units</h4>
-                                ${order.assigned_to ? `<p class="assigned">Assigned to: ${order.assigned_to}</p>` : '<button class="btn" onclick="claimDesign(' + order.id + ')">Claim Design</button>'}
-                                <button class="btn" onclick="designComplete(${order.id})">✅ Design Complete</button>
-                                <button class="btn" onclick="uploadFile(${order.id})">📁 Upload Files</button>
+                                <h4>${{order.customer_name} - ${{order.quantity} units</h4>
+                                ${{order.assigned_to ? `<p class="assigned">Assigned to: ${{order.assigned_to}</p>` : '<button class="btn" onclick="claimDesign(' + order.id + ')">Claim Design</button>'}
+                                <button class="btn" onclick="designComplete(${{order.id})">✅ Design Complete</button>
+                                <button class="btn" onclick="uploadFile(${{order.id})">📁 Upload Files</button>
                             </div>`;
                         });
                     }
@@ -126,9 +126,9 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
                     } else {
                         data.approval.forEach(order => {
                             html += `<div class="order-card approval">
-                                <h4>${order.customer_name} - ${order.quantity} units</h4>
-                                <button class="btn" onclick="approved(${order.id})">✅ Approved</button>
-                                <button class="btn" onclick="viewFiles(${order.id})">📄 View Files</button>
+                                <h4>${{order.customer_name} - ${{order.quantity} units</h4>
+                                <button class="btn" onclick="approved(${{order.id})">✅ Approved</button>
+                                <button class="btn" onclick="viewFiles(${{order.id})">📄 View Files</button>
                             </div>`;
                         });
                     }
@@ -142,9 +142,9 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
                     } else {
                         data.print.forEach(order => {
                             html += `<div class="order-card print">
-                                <h4>${order.customer_name} - ${order.quantity} units</h4>
-                                ${order.assigned_to ? `<p class="assigned">Assigned to: ${order.assigned_to}</p>` : '<button class="btn" onclick="claimPrint(' + order.id + ')">Claim Print Job</button>'}
-                                <button class="btn" onclick="printComplete(${order.id})">✅ Printing Complete</button>
+                                <h4>${{order.customer_name} - ${{order.quantity} units</h4>
+                                ${{order.assigned_to ? `<p class="assigned">Assigned to: ${{order.assigned_to}</p>` : '<button class="btn" onclick="claimPrint(' + order.id + ')">Claim Print Job</button>'}
+                                <button class="btn" onclick="printComplete(${{order.id})">✅ Printing Complete</button>
                             </div>`;
                         });
                     }
@@ -158,8 +158,8 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
                     } else {
                         data.production.forEach(order => {
                             html += `<div class="order-card production">
-                                <h4>${order.customer_name} - ${order.quantity} units</h4>
-                                <button class="btn" onclick="productionComplete(${order.id})">✅ Production Complete</button>
+                                <h4>${{order.customer_name} - ${{order.quantity} units</h4>
+                                <button class="btn" onclick="productionComplete(${{order.id})">✅ Production Complete</button>
                             </div>`;
                         });
                     }
@@ -173,8 +173,8 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
                     } else {
                         data.shipping.forEach(order => {
                             html += `<div class="order-card shipping">
-                                <h4>${order.customer_name} - ${order.quantity} units</h4>
-                                <button class="btn" onclick="shipped(${order.id})">✅ Mark as Shipped</button>
+                                <h4>${{order.customer_name} - ${{order.quantity} units</h4>
+                                <button class="btn" onclick="shipped(${{order.id})">✅ Mark as Shipped</button>
                             </div>`;
                         });
                     }
@@ -185,7 +185,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
 
             // Simple API call functions
             function startDesign(orderId) {
-                fetch(`/api/v1/simple-work-orders/${orderId}/status`, {
+                fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({status: 'design', notes: 'Started design work'})
@@ -196,7 +196,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             function claimDesign(orderId) {
                 const personName = prompt('Enter your name:');
                 if (personName) {
-                    fetch(`/api/v1/simple-work-orders/${orderId}/claim`, {
+                    fetch(`/api/v1/simple-work-orders/${orderId}}/claim`, {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify({person_name: personName})
@@ -206,7 +206,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             }
 
             function designComplete(orderId) {
-                fetch(`/api/v1/simple-work-orders/${orderId}/status`, {
+                fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({status: 'approval', notes: 'Design ready for customer approval'})
@@ -215,7 +215,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             }
 
             function approved(orderId) {
-                fetch(`/api/v1/simple-work-orders/${orderId}/status`, {
+                fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({status: 'print', notes: 'Customer approved - ready for printing'})
@@ -224,7 +224,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             }
 
             function printComplete(orderId) {
-                fetch(`/api/v1/simple-work-orders/${orderId}/status`, {
+                fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({status: 'production', notes: 'Printing complete - ready for cup production'})
@@ -233,7 +233,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             }
 
             function productionComplete(orderId) {
-                fetch(`/api/v1/simple-work-orders/${orderId}/status`, {
+                fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({status: 'shipping', notes: 'Cups produced - ready for shipping'})
@@ -242,7 +242,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             }
 
             function shipped(orderId) {
-                fetch(`/api/v1/simple-work-orders/${orderId}/status`, {
+                fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({status: 'completed', notes: 'Order shipped to customer'})
@@ -334,9 +334,9 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
                             data.users.forEach(user => {
                                 html += `
                                     <div style="background: #f8f9f9; padding: 10px; margin-bottom: 5px; border-radius: 3px;">
-                                    <strong>${user.full_name}</strong> (${user.role})
-                                    <br><small>${user.email}</small>
-                                    <button class="btn btn-danger btn-sm" onclick="deactivateUser(${user.id})">Deactivate</button>
+                                    <strong>${{user_full_name}</strong> (${{user_role})
+                                    <br><small>${{user.email}</small>
+                                    <button class="btn btn-danger btn-sm" onclick="deactivateUser(${{user.id})">Deactivate</button>
                                 </div>`;
                             });
                             document.getElementById('users-content').innerHTML = html;
@@ -396,7 +396,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
         </script>
     </body>
     </html>
-    """
+    """.format(user_full_name=user.full_name, user_role=user.role)
 
 
 @router.get("/dashboard")

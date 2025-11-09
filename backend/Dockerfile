@@ -29,5 +29,9 @@ COPY . .
 # Expose port
 EXPOSE 8000
 
+# Make startup script executable and use it
+COPY startup.sh /app/startup.sh
+RUN chmod +x /app/startup.sh
+
 # Run the application
-CMD ["sh", "-c", "python init_db.py && python run_server.py"]
+CMD ["/app/startup.sh"]

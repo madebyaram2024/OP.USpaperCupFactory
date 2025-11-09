@@ -265,13 +265,13 @@ def require_admin(request: Request, db: Session = Depends(get_db)):
 
 
 @router.post("/admin/create-user")
-def create_user(request: Request, db: Session = Depends(get_db)):
+async def create_user(request: Request, db: Session = Depends(get_db)):
     """Create a new user (admin only)."""
     try:
         # Verify admin access
         admin = require_admin(request, db)
 
-        data = request.json()
+        data = await request.json()
         username = data.get("username")
         password = data.get("password")
         email = data.get("email")
@@ -392,13 +392,13 @@ def toggle_user_status(user_id: int, request: Request, db: Session = Depends(get
 
 
 @router.post("/admin/reset-password/{user_id}")
-def reset_user_password(user_id: int, request: Request, db: Session = Depends(get_db)):
+async def reset_user_password(user_id: int, request: Request, db: Session = Depends(get_db)):
     """Reset user password (admin only)."""
     try:
         # Verify admin access
         admin = require_admin(request, db)
 
-        data = request.json()
+        data = await request.json()
         new_password = data.get("password")
 
         if not new_password or len(new_password) < 6:

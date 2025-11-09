@@ -25,11 +25,13 @@ def verify_simple_token(token: str) -> str:
     """Verify a simple JWT token."""
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
-        username = payload.get("sub")
+        username = payload.get("username")  # Changed from "sub" to match create_simple_token
         if username is None:
             return None
         return username
-    except jwt.PyJWTError:
+    except Exception as e:  # Changed from jwt.PyJWTError to generic Exception
+        import logging
+        logging.error(f"Token verification failed: {str(e)}")
         return None
 
 

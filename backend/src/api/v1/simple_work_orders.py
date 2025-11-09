@@ -1,5 +1,5 @@
-from fastapi import APIRouter, HTTPException, UploadFile, File, Form
-from fastapi.responses import HTMLResponse
+from fastapi import APIRouter, HTTPException, UploadFile, File, Form, Request
+from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy.orm import Session
 from typing import List, Optional
 import os
@@ -7,6 +7,7 @@ import shutil
 from datetime import datetime
 
 from ...services.simple_work_order_service import SimpleWorkOrderService
+from ...api.v1.simple_auth import get_current_user_from_request
 from ...database import get_db
 
 router = APIRouter()
@@ -17,43 +18,60 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
 @router.get("/", response_class=HTMLResponse)
-def dashboard_page():
-    """Simple dashboard HTML page."""
-    return """
+def dashboard_page(request: Request, db: Session = Depends(get_db)):
+    """Dashboard HTML page with authentication check."""
+    # Check if user is logged in
+    user = get_current_user_from_request(request, db)
+    if not user:
+        # Redirect to login page
+        return RedirectResponse(url="/api/v1/simple-auth/login")
+
+    return f"""
     <!DOCTYPE html>
     <html>
     <head>
         <title>USPC Factory - Work Orders</title>
         <style>
-            body { font-family: Arial, sans-serif; margin: 20px; }
-            .status-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
-            .status-section h2 { margin-top: 0; color: #333; }
-            .order-card {
+            body {{ font-family: Arial, sans-serif; margin: 20px; }}
+            .header {{ background: #007bff; color: white; padding: 15px; border-radius: 5px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }}
+            .header h1 {{ margin: 0; }}
+            .user-info {{ color: white; }}
+            .status-section {{ margin: 20px 0; padding: 15px; border: 1px solid #ddd; }}
+            .status-section h2 {{ margin-top: 0; color: #333; }}
+            .order-card {{
                 background: #f9f9f9;
                 padding: 15px;
                 margin: 10px 0;
                 border-left: 4px solid #007bff;
-            }
-            .order-card h4 { margin: 0 0 10px 0; }
-            .assigned { color: #28a745; font-weight: bold; }
-            .btn {
+            }}
+            .order-card h4 {{ margin: 0 0 10px 0; }}
+            .assigned {{ color: #28a745; font-weight: bold; }}
+            .btn {{
                 background: #007bff;
                 color: white;
                 padding: 8px 15px;
                 border: none;
                 cursor: pointer;
                 margin: 5px;
-            }
-            .btn:hover { background: #0056b3; }
-            .design { border-left-color: #ffc107; }
-            .approval { border-left-color: #17a2b8; }
-            .print { border-left-color: #28a745; }
-            .production { border-left-color: #6f42c1; }
-            .shipping { border-left-color: #fd7e14; }
+            }}
+            .btn:hover {{ background: #0056b3; }}
+            .btn-danger {{ background: #dc3545; }}
+            .btn-danger:hover {{ background: #c82333; }}
+            .design {{ border-left-color: #ffc107; }}
+            .approval {{ border-left-color: #17a2b8; }}
+            .print {{ border-left-color: #28a745; }}
+            .production {{ border-left-color: #6f42c1; }}
+            .shipping {{ border-left-color: #fd7e14; }}
         </style>
     </head>
     <body>
-        <h1>🏭 USPC Factory - Work Order Dashboard</h1>
+        <div class="header">
+            <h1>🏭 USPC Factory - Work Orders</h1>
+            <div class="user-info">
+                <strong>{user.full_name}</strong> ({user.role})
+                <a href="/api/v1/simple-auth/logout" class="btn btn-danger" style="background: #dc3545;">Logout</a>
+            </div>
+        </div>
 
         <div id="dashboard-content">
             <p>Loading work orders...</p>
@@ -231,6 +249,150 @@ def dashboard_page():
                 });
                 location.reload();
             }
+        </script>
+
+        // Admin Panel functionality (only for admin users)
+        {"<button id='admin-panel-btn' onclick='toggleAdminPanel()' style='position: fixed; top: 80px; right: 20px; background: #28a745; color: white; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1000;'>👤 Admin Panel</button>" if user.is_admin else ""}
+
+        {"<div id='admin-panel' style='position: fixed; top: 120px; right: 20px; background: white; border: 1px solid #ddd; border-radius: 5px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 1000; width: 300px; display: none;'>" if user.is_admin else ""}
+            <h3>👤 Admin Panel</h3>
+            <button class="btn" onclick="showCreateUserForm()">➕ Create User</button>
+            <button class="btn" onclick="showUserList()">📋 Manage Users</button>
+            <button class="btn btn-danger" onclick="toggleAdminPanel()">❌</button>
+
+            <!-- Create User Form -->
+            <div id="create-user-form" style="display: none; margin-top: 15px;">
+                <h4>Create New User</h4>
+                <form id="createUserForm">
+                    <div style="margin-bottom: 10px;">
+                        <label>Full Name: <input type="text" id="fullName" name="fullName" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label>Username: <input type="text" id="username" name="username" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label>Email: <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label>Password: <input type="password" id="password" name="password" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label>Role:
+                            <select name="role" id="role" style="width: 100%; padding: 8px; box-sizing: border-box;">
+                                <option value="employee">Employee</option>
+                                <option value="designer">Designer</option>
+                                <option value="printer">Printer</option>
+                            </select>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn">Create User</button>
+                    <button type="button" class="btn btn-danger" onclick="hideCreateUserForm()">Cancel</button>
+                </form>
+            </div>
+
+            <!-- User List -->
+            <div id="user-list" style="display: none; margin-top: 15px;">
+                <h4>Manage Users</h4>
+                <div id="users-content">Loading users...</div>
+            </div>
+        </div>
+
+        <script>
+            // Existing functions...
+
+            // Admin Panel functions
+            function toggleAdminPanel() {
+                const panel = document.getElementById('admin-panel');
+                if (panel.style.display === 'none') {
+                    panel.style.display = 'block';
+                } else {
+                    panel.style.display = 'none';
+                }
+            }
+
+            function showCreateUserForm() {
+                document.getElementById('create-user-form').style.display = 'block';
+                document.getElementById('user-list').style.display = 'none';
+            }
+
+            function showUserList() {
+                document.getElementById('user-list').style.display = 'block';
+                document.getElementById('create-user-form').style.display = 'none';
+                loadUsers();
+            }
+
+            function hideCreateUserForm() {
+                document.getElementById('create-user-form').style.display = 'none';
+            }
+
+            function loadUsers() {
+                fetch('/api/v1/simple-auth/users')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            let html = '<h5>All Users:</h5>';
+                            data.users.forEach(user => {
+                                html += `
+                                    <div style="background: #f8f9f9; padding: 10px; margin-bottom: 5px; border-radius: 3px;">
+                                    <strong>${user.full_name}</strong> (${user.role})
+                                    <br><small>${user.email}</small>
+                                    <button class="btn btn-danger btn-sm" onclick="deactivateUser(${user.id})">Deactivate</button>
+                                </div>`;
+                            });
+                            document.getElementById('users-content').innerHTML = html;
+                        } else {
+                            document.getElementById('users-content').innerHTML = 'Error loading users';
+                        }
+                    });
+            }
+
+            function createUser(formData) {
+                fetch('/api/v1/simple-auth/create-user', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('User created successfully!');
+                        hideCreateUserForm();
+                        loadUsers();
+                    } else {
+                        alert('Error: ' + data.error);
+                    }
+                });
+            }
+
+            function deactivateUser(userId) {
+                if (confirm('Are you sure you want to deactivate this user?')) {
+                    fetch(`/api/v1/simple-auth/deactivate-user/${userId}`, {
+                        method: 'POST'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('User deactivated successfully!');
+                            loadUsers();
+                        } else {
+                            alert('Error: ' + data.error);
+                        }
+                    });
+                }
+            }
+
+            // Handle create user form submission
+            document.getElementById('createUserForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    username: document.getElementById('username').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    role: document.getElementById('role').value
+                };
+                createUser(formData);
+            });
         </script>
     </body>
     </html>

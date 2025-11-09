@@ -5,6 +5,9 @@ from .api.v1.simple_work_orders import router as simple_work_orders_router
 from .api.v1.simple_auth import router as simple_auth_router
 import logging
 
+# Import models to ensure they are registered with SQLAlchemy
+from .models import SimpleUser, SimpleWorkOrder, WorkOrderFile, WorkOrderUpdate
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

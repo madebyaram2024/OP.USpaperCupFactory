@@ -37,10 +37,6 @@ services:
     restart: unless-stopped
     networks:
       - app-network
-    labels:
-      - "coolify.proxy.host=${BACKEND_HOST:-backend.localhost}"
-      - "coolify.proxy.port=8000"
-      - "coolify.proxy.scheme=http"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s

@@ -78,8 +78,21 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
         </div>
 
         <script>
+            // Helper function to get auth headers
+            function getAuthHeaders() {
+                const token = localStorage.getItem('auth_token');
+                return token ? {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                } : {
+                    'Content-Type': 'application/json'
+                };
+            }
+
             // Load dashboard data
-            fetch('/api/v1/simple-work-orders/dashboard')
+            fetch('/api/v1/simple-work-orders/dashboard', {
+                headers: getAuthHeaders()
+            })
                 .then(response => response.json())
                 .then(data => {
                     let html = '';
@@ -187,7 +200,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             function startDesign(orderId) {
                 fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: getAuthHeaders(),
                     body: JSON.stringify({status: 'design', notes: 'Started design work'})
                 });
                 location.reload();
@@ -198,7 +211,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
                 if (personName) {
                     fetch(`/api/v1/simple-work-orders/${orderId}}/claim`, {
                         method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
+                        headers: getAuthHeaders(),
                         body: JSON.stringify({person_name: personName})
                     });
                     location.reload();
@@ -208,7 +221,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             function designComplete(orderId) {
                 fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: getAuthHeaders(),
                     body: JSON.stringify({status: 'approval', notes: 'Design ready for customer approval'})
                 });
                 location.reload();
@@ -217,7 +230,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             function approved(orderId) {
                 fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: getAuthHeaders(),
                     body: JSON.stringify({status: 'print', notes: 'Customer approved - ready for printing'})
                 });
                 location.reload();
@@ -226,7 +239,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             function printComplete(orderId) {
                 fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: getAuthHeaders(),
                     body: JSON.stringify({status: 'production', notes: 'Printing complete - ready for cup production'})
                 });
                 location.reload();
@@ -235,7 +248,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             function productionComplete(orderId) {
                 fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: getAuthHeaders(),
                     body: JSON.stringify({status: 'shipping', notes: 'Cups produced - ready for shipping'})
                 });
                 location.reload();
@@ -244,7 +257,7 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             function shipped(orderId) {
                 fetch(`/api/v1/simple-work-orders/${orderId}}/status`, {
                     method: 'PATCH',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: getAuthHeaders(),
                     body: JSON.stringify({status: 'completed', notes: 'Order shipped to customer'})
                 });
                 location.reload();
@@ -326,7 +339,9 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             }
 
             function loadUsers() {
-                fetch('/api/v1/simple-auth/users')
+                fetch('/api/v1/simple-auth/admin/users', {
+                    headers: getAuthHeaders()
+                })
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
@@ -347,9 +362,9 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             }
 
             function createUser(formData) {
-                fetch('/api/v1/simple-auth/create-user', {
+                fetch('/api/v1/simple-auth/admin/create-user', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: getAuthHeaders(),
                     body: JSON.stringify(formData)
                 })
                 .then(response => response.json())
@@ -366,13 +381,14 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
 
             function deactivateUser(userId) {
                 if (confirm('Are you sure you want to deactivate this user?')) {
-                    fetch(`/api/v1/simple-auth/deactivate-user/${userId}`, {
-                        method: 'POST'
+                    fetch(`/api/v1/simple-auth/admin/toggle-user/${userId}`, {
+                        method: 'POST',
+                        headers: getAuthHeaders()
                     })
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            alert('User deactivated successfully!');
+                            alert('User status toggled successfully!');
                             loadUsers();
                         } else {
                             alert('Error: ' + data.error);

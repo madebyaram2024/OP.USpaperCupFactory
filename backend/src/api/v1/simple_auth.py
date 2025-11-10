@@ -100,8 +100,9 @@ def login_page():
                     const result = await response.json();
 
                     if (result.success) {
-                        // Store token and redirect
+                        // Store token in both localStorage and cookie
                         localStorage.setItem('auth_token', result.token);
+                        document.cookie = `auth_token=${result.token}; path=/; max-age=86400; SameSite=Lax`;
                         document.getElementById('message').innerHTML = '<div class="success">✅ Login successful! Redirecting...</div>';
                         setTimeout(() => {
                             window.location.href = '/api/v1/simple-work-orders/';
@@ -206,10 +207,28 @@ async def login_user(request: Request, db: Session = Depends(get_db)):
         return {"success": False, "error": f"Login failed: {str(e)}"}
 
 
-@router.get("/logout")
+@router.get("/logout", response_class=HTMLResponse)
 def logout_user():
-    """Simple logout - just returns success (client-side handles token removal)."""
-    return {"success": True, "message": "Logged out successfully"}
+    """Simple logout - clears token and redirects to login."""
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Logging out...</title>
+    </head>
+    <body>
+        <p>Logging out...</p>
+        <script>
+            // Clear localStorage
+            localStorage.removeItem('auth_token');
+            // Clear cookie
+            document.cookie = 'auth_token=; path=/; max-age=0; SameSite=Lax';
+            // Redirect to login
+            window.location.href = '/api/v1/simple-auth/login';
+        </script>
+    </body>
+    </html>
+    """
 
 
 def get_current_user_from_request(request: Request, db: Session = Depends(get_db)):

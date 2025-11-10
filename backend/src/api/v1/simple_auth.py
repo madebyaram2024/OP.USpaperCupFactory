@@ -231,7 +231,7 @@ def logout_user():
     """
 
 
-def get_current_user_from_request(request: Request, db: Session = Depends(get_db)):
+def get_current_user_from_request(request: Request, db: Session):
     """Helper to get current user from request."""
     # Get token from Authorization header or cookie
     token = None
@@ -257,7 +257,7 @@ def get_current_user_from_request(request: Request, db: Session = Depends(get_db
     return user
 
 
-def require_auth_or_redirect(request: Request, db: Session = Depends(get_db)):
+def require_auth_or_redirect(request: Request, db: Session):
     """Check authentication or return redirect to login."""
     user = get_current_user_from_request(request, db)
 
@@ -268,13 +268,13 @@ def require_auth_or_redirect(request: Request, db: Session = Depends(get_db)):
 
 
 # Simple dependency that can be used in other routes
-def get_current_user_optional(request: Request, db: Session = Depends(get_db)):
+def get_current_user_optional(request: Request, db: Session):
     """Get current user (optional - returns None if not authenticated)."""
     return get_current_user_from_request(request, db)
 
 
 # Admin-only endpoints
-def require_admin(request: Request, db: Session = Depends(get_db)):
+def require_admin(request: Request, db: Session):
     """Require admin authentication."""
     user = get_current_user_from_request(request, db)
     if not user or not user.is_admin:

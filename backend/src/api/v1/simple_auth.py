@@ -220,8 +220,8 @@ def get_current_user_from_request(request: Request, db: Session = Depends(get_db
         auth_header = request.headers["Authorization"]
         if auth_header.startswith("Bearer "):
             token = auth_header[7:]
-    elif "token" in request.query:
-        token = request.query["token"]
+    elif "token" in request.query_params:
+        token = request.query_params["token"]
     elif "auth_token" in request.cookies:
         token = request.cookies["auth_token"]
 

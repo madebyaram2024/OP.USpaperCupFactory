@@ -26,6 +26,153 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
         # Redirect to login page
         return RedirectResponse(url="/api/v1/simple-auth/login")
 
+    # Create admin panel HTML if user is admin
+    admin_panel_btn = '''<button id='admin-panel-btn' onclick='toggleAdminPanel()' style='position: fixed; top: 80px; right: 20px; background: #28a745; color: white; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1000;'>👤 Admin Panel</button>''' if user.is_admin else ""
+
+    admin_panel_html = '''
+        <div id='admin-panel' style='position: fixed; top: 120px; right: 20px; background: white; border: 1px solid #ddd; border-radius: 5px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 1000; width: 300px; display: none;'>
+            <h3>👤 Admin Panel</h3>
+            <button class="btn" onclick="showCreateUserForm()">➕ Create User</button>
+            <button class="btn" onclick="showUserList()">📋 Manage Users</button>
+            <button class="btn btn-danger" onclick="toggleAdminPanel()">❌</button>
+
+            <!-- Create User Form -->
+            <div id="create-user-form" style="display: none; margin-top: 15px;">
+                <h4>Create New User</h4>
+                <form id="createUserForm">
+                    <div style="margin-bottom: 10px;">
+                        <label>Full Name: <input type="text" id="fullName" name="fullName" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label>Username: <input type="text" id="username" name="username" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label>Email: <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label>Password: <input type="password" id="password" name="password" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label>Role:
+                            <select name="role" id="role" style="width: 100%; padding: 8px; box-sizing: border-box;">
+                                <option value="employee">Employee</option>
+                                <option value="designer">Designer</option>
+                                <option value="printer">Printer</option>
+                            </select>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn">Create User</button>
+                    <button type="button" class="btn btn-danger" onclick="hideCreateUserForm()">Cancel</button>
+                </form>
+            </div>
+
+            <!-- User List -->
+            <div id="user-list" style="display: none; margin-top: 15px;">
+                <h4>Manage Users</h4>
+                <div id="users-content">Loading users...</div>
+            </div>
+        </div>
+    ''' if user.is_admin else ""
+
+    admin_panel_script = '''
+            // Admin Panel functions
+            function toggleAdminPanel() {
+                const panel = document.getElementById('admin-panel');
+                if (panel.style.display === 'none') {
+                    panel.style.display = 'block';
+                } else {
+                    panel.style.display = 'none';
+                }
+            }
+
+            function showCreateUserForm() {
+                document.getElementById('create-user-form').style.display = 'block';
+                document.getElementById('user-list').style.display = 'none';
+            }
+
+            function showUserList() {
+                document.getElementById('user-list').style.display = 'block';
+                document.getElementById('create-user-form').style.display = 'none';
+                loadUsers();
+            }
+
+            function hideCreateUserForm() {
+                document.getElementById('create-user-form').style.display = 'none';
+            }
+
+            function loadUsers() {
+                fetch('/api/v1/simple-auth/admin/users', {
+                    headers: getAuthHeaders()
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            let html = '<h5>All Users:</h5>';
+                            data.users.forEach(user => {
+                                html += `
+                                    <div style="background: #f8f9f9; padding: 10px; margin-bottom: 5px; border-radius: 3px;">
+                                    <strong>${user.full_name}</strong> (${user.role})
+                                    <br><small>${user.email}</small>
+                                    <button class="btn btn-danger btn-sm" onclick="deactivateUser(${user.id})">Deactivate</button>
+                                </div>`;
+                            });
+                            document.getElementById('users-content').innerHTML = html;
+                        } else {
+                            document.getElementById('users-content').innerHTML = 'Error loading users';
+                        }
+                    });
+            }
+
+            function createUser(formData) {
+                fetch('/api/v1/simple-auth/admin/create-user', {
+                    method: 'POST',
+                    headers: getAuthHeaders(),
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('User created successfully!');
+                        hideCreateUserForm();
+                        loadUsers();
+                    } else {
+                        alert('Error: ' + data.error);
+                    }
+                });
+            }
+
+            function deactivateUser(userId) {
+                if (confirm('Are you sure you want to deactivate this user?')) {
+                    fetch(`/api/v1/simple-auth/admin/toggle-user/${userId}`, {
+                        method: 'POST',
+                        headers: getAuthHeaders()
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('User status toggled successfully!');
+                            loadUsers();
+                        } else {
+                            alert('Error: ' + data.error);
+                        }
+                    });
+                }
+            }
+
+            // Handle create user form submission
+            document.getElementById('createUserForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = {
+                    full_name: document.getElementById('fullName').value,
+                    username: document.getElementById('username').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    role: document.getElementById('role').value
+                };
+                createUser(formData);
+            });
+    ''' if user.is_admin else ""
+
     return """
     <!DOCTYPE html>
     <html>
@@ -264,155 +411,21 @@ def dashboard_page(request: Request, db: Session = Depends(get_db)):
             }
         </script>
 
-        // Admin Panel functionality (only for admin users)
-        {"<button id='admin-panel-btn' onclick='toggleAdminPanel()' style='position: fixed; top: 80px; right: 20px; background: #28a745; color: white; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1000;'>👤 Admin Panel</button>" if user.is_admin else ""}
-
-        {"<div id='admin-panel' style='position: fixed; top: 120px; right: 20px; background: white; border: 1px solid #ddd; border-radius: 5px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 1000; width: 300px; display: none;'>" if user.is_admin else ""}
-            <h3>👤 Admin Panel</h3>
-            <button class="btn" onclick="showCreateUserForm()">➕ Create User</button>
-            <button class="btn" onclick="showUserList()">📋 Manage Users</button>
-            <button class="btn btn-danger" onclick="toggleAdminPanel()">❌</button>
-
-            <!-- Create User Form -->
-            <div id="create-user-form" style="display: none; margin-top: 15px;">
-                <h4>Create New User</h4>
-                <form id="createUserForm">
-                    <div style="margin-bottom: 10px;">
-                        <label>Full Name: <input type="text" id="fullName" name="fullName" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label>Username: <input type="text" id="username" name="username" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label>Email: <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label>Password: <input type="password" id="password" name="password" required style="width: 100%; padding: 8px; box-sizing: border-box;"></label>
-                    </div>
-                    <div style="margin-bottom: 10px;">
-                        <label>Role:
-                            <select name="role" id="role" style="width: 100%; padding: 8px; box-sizing: border-box;">
-                                <option value="employee">Employee</option>
-                                <option value="designer">Designer</option>
-                                <option value="printer">Printer</option>
-                            </select>
-                        </label>
-                    </div>
-                    <button type="submit" class="btn">Create User</button>
-                    <button type="button" class="btn btn-danger" onclick="hideCreateUserForm()">Cancel</button>
-                </form>
-            </div>
-
-            <!-- User List -->
-            <div id="user-list" style="display: none; margin-top: 15px;">
-                <h4>Manage Users</h4>
-                <div id="users-content">Loading users...</div>
-            </div>
-        </div>
+        {admin_panel_btn}
+        {admin_panel_html}
 
         <script>
-            // Existing functions...
-
-            // Admin Panel functions
-            function toggleAdminPanel() {
-                const panel = document.getElementById('admin-panel');
-                if (panel.style.display === 'none') {
-                    panel.style.display = 'block';
-                } else {
-                    panel.style.display = 'none';
-                }
-            }
-
-            function showCreateUserForm() {
-                document.getElementById('create-user-form').style.display = 'block';
-                document.getElementById('user-list').style.display = 'none';
-            }
-
-            function showUserList() {
-                document.getElementById('user-list').style.display = 'block';
-                document.getElementById('create-user-form').style.display = 'none';
-                loadUsers();
-            }
-
-            function hideCreateUserForm() {
-                document.getElementById('create-user-form').style.display = 'none';
-            }
-
-            function loadUsers() {
-                fetch('/api/v1/simple-auth/admin/users', {
-                    headers: getAuthHeaders()
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            let html = '<h5>All Users:</h5>';
-                            data.users.forEach(user => {
-                                html += `
-                                    <div style="background: #f8f9f9; padding: 10px; margin-bottom: 5px; border-radius: 3px;">
-                                    <strong>${{user_full_name}</strong> (${{user_role})
-                                    <br><small>${{user.email}</small>
-                                    <button class="btn btn-danger btn-sm" onclick="deactivateUser(${{user.id})">Deactivate</button>
-                                </div>`;
-                            });
-                            document.getElementById('users-content').innerHTML = html;
-                        } else {
-                            document.getElementById('users-content').innerHTML = 'Error loading users';
-                        }
-                    });
-            }
-
-            function createUser(formData) {
-                fetch('/api/v1/simple-auth/admin/create-user', {
-                    method: 'POST',
-                    headers: getAuthHeaders(),
-                    body: JSON.stringify(formData)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('User created successfully!');
-                        hideCreateUserForm();
-                        loadUsers();
-                    } else {
-                        alert('Error: ' + data.error);
-                    }
-                });
-            }
-
-            function deactivateUser(userId) {
-                if (confirm('Are you sure you want to deactivate this user?')) {
-                    fetch(`/api/v1/simple-auth/admin/toggle-user/${userId}`, {
-                        method: 'POST',
-                        headers: getAuthHeaders()
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert('User status toggled successfully!');
-                            loadUsers();
-                        } else {
-                            alert('Error: ' + data.error);
-                        }
-                    });
-                }
-            }
-
-            // Handle create user form submission
-            document.getElementById('createUserForm').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const formData = {
-                    fullName: document.getElementById('fullName').value,
-                    username: document.getElementById('username').value,
-                    email: document.getElementById('email').value,
-                    password: document.getElementById('password').value,
-                    role: document.getElementById('role').value
-                };
-                createUser(formData);
-            });
+            {admin_panel_script}
         </script>
     </body>
     </html>
-    """.format(user_full_name=user.full_name, user_role=user.role)
+    """.format(
+        user_full_name=user.full_name,
+        user_role=user.role,
+        admin_panel_btn=admin_panel_btn,
+        admin_panel_html=admin_panel_html,
+        admin_panel_script=admin_panel_script
+    )
 
 
 @router.get("/dashboard")

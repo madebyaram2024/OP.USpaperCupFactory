@@ -116,13 +116,32 @@ class SimpleWorkOrderService:
 
     def get_dashboard_data(self) -> dict:
         """Get simple dashboard data."""
+        def serialize_order(order):
+            """Convert SimpleWorkOrder to dict for JSON serialization."""
+            return {
+                "id": order.id,
+                "customer_name": order.customer_name,
+                "customer_email": order.customer_email,
+                "order_description": order.order_description,
+                "quantity": order.quantity,
+                "special_notes": order.special_notes,
+                "status": order.status,
+                "assigned_to": order.assigned_to,
+                "assigned_at": order.assigned_at.isoformat() if order.assigned_at else None,
+                "order_creator_notified": order.order_creator_notified,
+                "last_notification": order.last_notification.isoformat() if order.last_notification else None,
+                "delivery_date": order.delivery_date.isoformat() if order.delivery_date else None,
+                "created_at": order.created_at.isoformat() if order.created_at else None,
+                "updated_at": order.updated_at.isoformat() if order.updated_at else None
+            }
+
         return {
-            "new_orders": self.get_orders_by_status("new_order"),
-            "design": self.get_orders_by_status("design"),
-            "approval": self.get_orders_by_status("approval"),
-            "print": self.get_orders_by_status("print"),
-            "production": self.get_orders_by_status("production"),
-            "shipping": self.get_orders_by_status("shipping")
+            "new_orders": [serialize_order(o) for o in self.get_orders_by_status("new_order")],
+            "design": [serialize_order(o) for o in self.get_orders_by_status("design")],
+            "approval": [serialize_order(o) for o in self.get_orders_by_status("approval")],
+            "print": [serialize_order(o) for o in self.get_orders_by_status("print")],
+            "production": [serialize_order(o) for o in self.get_orders_by_status("production")],
+            "shipping": [serialize_order(o) for o in self.get_orders_by_status("shipping")]
         }
 
     # Simple status validation
